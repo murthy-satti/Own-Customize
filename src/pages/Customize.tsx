@@ -61,17 +61,17 @@ const SortableItem: React.FC<SortableItemProps> = ({ id, component, onRemove, on
       ref={setNodeRef}
       style={style}
       onClick={() => onSelect(id)}
-      className={`relative group bg-white rounded-lg p-4 mb-3 cursor-pointer transition-all ${
-        isSelected ? 'ring-2 ring-blue-500 shadow-lg' : 'border-2 border-gray-200 hover:border-blue-300'
+      className={`relative group bg-white dark:bg-slate-900 rounded-lg p-4 mb-3 cursor-pointer transition-all ${
+        isSelected ? 'ring-2 ring-blue-500 shadow-lg' : 'border-2 border-gray-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500'
       }`}
     >
       {/* Drag Handle */}
       <div
         {...attributes}
         {...listeners}
-        className="absolute left-2 top-2 cursor-grab active:cursor-grabbing bg-gray-100 hover:bg-gray-200 rounded p-2 transition-colors z-10"
+        className="absolute left-2 top-2 cursor-grab active:cursor-grabbing bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 rounded p-2 transition-colors z-10"
       >
-        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
         </svg>
       </div>
@@ -82,7 +82,7 @@ const SortableItem: React.FC<SortableItemProps> = ({ id, component, onRemove, on
           e.stopPropagation();
           onRemove(id);
         }}
-        className="absolute right-2 top-2 bg-red-100 hover:bg-red-200 text-red-600 rounded p-2 transition-colors z-10"
+        className="absolute right-2 top-2 bg-red-100 dark:bg-red-900 hover:bg-red-200 dark:hover:bg-red-800 text-red-600 dark:text-red-300 rounded p-2 transition-colors z-10"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -197,11 +197,11 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col lg:flex-row overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-800 flex flex-col lg:flex-row overflow-x-hidden">
       {/* Left Sidebar - Component Library */}
-      <div className="w-full lg:w-80 xl:w-96 bg-white shadow-lg overflow-y-auto border-b lg:border-r lg:border-b-0 border-slate-200 max-h-96 lg:max-h-screen">
+      <div className="w-full lg:w-80 xl:w-96 bg-white dark:bg-slate-900 shadow-lg overflow-y-auto border-b lg:border-r lg:border-b-0 border-slate-200 dark:border-slate-700 max-h-96 lg:max-h-screen">
         <div className="p-4">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 px-2">Component Library</h2>
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 px-2">Component Library</h2>
 
           {/* Categories with Expandable Components */}
           <div className="space-y-2">
@@ -213,7 +213,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                   className={`w-full px-4 py-2.5 rounded-lg font-medium text-left transition-all ${
                     selectedCategory === category
                       ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200'
+                      : 'bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-600'
                   }`}
                 >
                   {category}
@@ -225,9 +225,9 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                     {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
                       <div
                         key={index}
-                        className="border border-slate-200 rounded-lg p-3 hover:border-blue-400 hover:shadow-md transition-all bg-white"
+                        className="border border-slate-200 dark:border-slate-700 rounded-lg p-3 hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md transition-all bg-white dark:bg-slate-800"
                       >
-                        <div className={`mb-3 flex items-center justify-center bg-slate-50 rounded-lg overflow-hidden ${
+                        <div className={`mb-3 flex items-center justify-center bg-slate-50 dark:bg-slate-700 rounded-lg overflow-hidden ${
                           selectedCategory === 'Headers' || selectedCategory === 'Footers'
                             ? 'min-h-[100px] p-1'
                             : 'min-h-[80px] p-3'
@@ -240,8 +240,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                             {component.preview}
                           </div>
                         </div>
-                        <div className="flex justify-between items-center pt-2 border-t border-slate-100">
-                          <span className="text-sm font-semibold text-slate-700">{component.name}</span>
+                        <div className="flex justify-between items-center pt-2 border-t border-slate-100 dark:border-slate-600">
+                          <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">{component.name}</span>
                           <button
                             onClick={() => addComponentToPage(component, selectedCategory)}
                             className="px-3 py-1.5 bg-blue-600 text-white text-xs rounded-lg hover:bg-blue-700 transition-all font-medium"
@@ -262,20 +262,20 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
       {/* Center - Canvas Area */}
       <div className="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden max-w-full">
         <div className="w-full max-w-full">
-          <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-6 max-w-full overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-md p-4 sm:p-6 mb-6 max-w-full overflow-hidden">
             <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
               <div className="flex flex-wrap items-center gap-2 sm:gap-4">
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 break-words">
-                  Canvas <span className="text-base sm:text-lg font-normal text-slate-500">({pageComponents.length})</span>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 break-words">
+                  Canvas <span className="text-base sm:text-lg font-normal text-slate-500 dark:text-slate-400">({pageComponents.length})</span>
                 </h2>
 
                 {/* Semantic HTML Toggle */}
-                <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-2 sm:px-3 py-1.5">
-                  <span className="text-xs sm:text-sm text-slate-600 font-medium whitespace-nowrap">Semantic</span>
+                <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg px-2 sm:px-3 py-1.5">
+                  <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium whitespace-nowrap">Semantic</span>
                   <button
                     onClick={() => setUseSemanticHTML(!useSemanticHTML)}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      useSemanticHTML ? 'bg-blue-600' : 'bg-slate-300'
+                      useSemanticHTML ? 'bg-blue-600' : 'bg-slate-300 dark:bg-slate-600'
                     }`}
                     title={useSemanticHTML ? 'Using semantic tags (header, footer, nav, etc.)' : 'Using div tags'}
                   >
@@ -288,7 +288,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                 </div>
               </div>
 
-              <div className="flex gap-1 items-center bg-slate-100 rounded-lg p-1.5 shadow-sm border border-slate-200">
+              <div className="flex gap-1 items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-1.5 shadow-sm border border-slate-200 dark:border-slate-600">
                 {/* Preview Icon */}
                 <button
                   onClick={() => {
@@ -298,7 +298,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                   className={`p-2 rounded-md transition-colors ${
                     showPreview
                       ? 'bg-blue-600 text-white'
-                      : 'text-gray-600 hover:bg-gray-200'
+                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-700'
                   }`}
                   title="Preview"
                 >
@@ -317,7 +317,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                   className={`p-2 rounded-md transition-colors ${
                     showCode
                       ? 'bg-blue-600 text-white'
-                      : 'text-gray-600 hover:bg-gray-200'
+                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-700'
                   }`}
                   title="View Code"
                 >
@@ -329,7 +329,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                 {/* Copy Icon */}
                 <button
                   onClick={handleCopyCode}
-                  className="p-2 text-gray-600 hover:bg-gray-200 rounded-md transition-colors"
+                  className="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-700 rounded-md transition-colors"
                   title="Copy Code"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,14 +340,14 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
             </div>
 
             {pageComponents.length === 0 ? (
-              <div className="text-center py-20 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
-                <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="text-center py-20 border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-lg bg-gray-50 dark:bg-slate-800">
+                <svg className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
-                <p className="text-gray-500 text-lg font-medium">
+                <p className="text-gray-500 dark:text-gray-400 text-lg font-medium">
                   No components yet
                 </p>
-                <p className="text-gray-400 text-sm mt-2">
+                <p className="text-gray-400 dark:text-gray-500 text-sm mt-2">
                   Add components from the library to start building
                 </p>
               </div>
@@ -378,9 +378,9 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
 
           {/* Code Preview */}
           {showCode && (
-            <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 max-w-full overflow-hidden">
-              <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">Generated Code</h2>
-              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto max-w-full">
+            <div className="bg-white dark:bg-slate-900 rounded-xl shadow-md p-4 sm:p-6 max-w-full overflow-hidden">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Generated Code</h2>
+              <div className="bg-gray-900 dark:bg-slate-950 rounded-lg p-4 overflow-x-auto max-w-full">
                 <pre className="text-xs sm:text-sm text-gray-100 whitespace-pre-wrap break-words">
                   <code>{generateFullPageCode()}</code>
                 </pre>
@@ -391,13 +391,13 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
           {/* Preview Modal */}
           {showPreview && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
+              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
                 {/* Preview Header */}
-                <div className="flex justify-between items-center p-4 border-b bg-gray-50">
-                  <h2 className="text-xl font-bold text-gray-800">Live Preview</h2>
+                <div className="flex justify-between items-center p-4 border-b bg-gray-50 dark:bg-slate-800 dark:border-slate-700">
+                  <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Live Preview</h2>
                   <button
                     onClick={() => setShowPreview(false)}
-                    className="p-2 text-gray-600 hover:bg-gray-200 rounded-lg transition-colors"
+                    className="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -406,8 +406,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                 </div>
 
                 {/* Preview Content */}
-                <div className="flex-1 overflow-y-auto bg-gray-50 p-8">
-                  <div className="min-h-screen bg-gray-50 py-8">
+                <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-800 p-8">
+                  <div className="min-h-screen bg-gray-50 dark:bg-slate-800 py-8">
                     <div className="w-full px-4 space-y-6">
                       {pageComponents.map((component) => (
                         <div key={component.id}>
@@ -424,7 +424,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
       </div>
 
       {/* Right Sidebar - Customization Panel */}
-      <div className="w-full lg:w-80 xl:w-96 bg-gradient-to-br from-slate-50 to-white shadow-lg overflow-y-auto border-t lg:border-l lg:border-t-0 border-slate-200 max-h-screen">
+      <div className="w-full lg:w-80 xl:w-96 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-lg overflow-y-auto border-t lg:border-l lg:border-t-0 border-slate-200 dark:border-slate-700 max-h-screen">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
@@ -433,8 +433,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
               </svg>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-800">Customize</h2>
-              <p className="text-xs text-slate-500">Style your component</p>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Customize</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Style your component</p>
             </div>
           </div>
 
@@ -452,8 +452,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
               </div>
 
               {/* Background Color */}
-              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
-                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   Background Color
                 </label>
@@ -463,22 +463,22 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       type="color"
                       value={selectedComponent.customProps.bgColor || '#ffffff'}
                       onChange={(e) => updateComponentProps(selectedComponent.id, { bgColor: e.target.value })}
-                      className="w-14 h-14 rounded-xl border-2 border-slate-300 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                      className="w-14 h-14 rounded-xl border-2 border-slate-300 dark:border-slate-600 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
                     />
                   </div>
                   <input
                     type="text"
                     value={selectedComponent.customProps.bgColor || '#ffffff'}
                     onChange={(e) => updateComponentProps(selectedComponent.id, { bgColor: e.target.value })}
-                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none font-mono text-sm transition-all"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none font-mono text-sm transition-all bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
                     placeholder="#ffffff"
                   />
                 </div>
               </div>
 
               {/* Text Color */}
-              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
-                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                   Text Color
                 </label>
@@ -488,22 +488,22 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       type="color"
                       value={selectedComponent.customProps.textColor || '#000000'}
                       onChange={(e) => updateComponentProps(selectedComponent.id, { textColor: e.target.value })}
-                      className="w-14 h-14 rounded-xl border-2 border-slate-300 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                      className="w-14 h-14 rounded-xl border-2 border-slate-300 dark:border-slate-600 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
                     />
                   </div>
                   <input
                     type="text"
                     value={selectedComponent.customProps.textColor || '#000000'}
                     onChange={(e) => updateComponentProps(selectedComponent.id, { textColor: e.target.value })}
-                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-mono text-sm transition-all"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-mono text-sm transition-all bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
                     placeholder="#000000"
                   />
                 </div>
               </div>
 
               {/* Border Color */}
-              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
-                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
                   Border Color
                 </label>
@@ -513,41 +513,41 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       type="color"
                       value={selectedComponent.customProps.borderColor || '#e5e7eb'}
                       onChange={(e) => updateComponentProps(selectedComponent.id, { borderColor: e.target.value })}
-                      className="w-14 h-14 rounded-xl border-2 border-slate-300 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                      className="w-14 h-14 rounded-xl border-2 border-slate-300 dark:border-slate-600 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
                     />
                   </div>
                   <input
                     type="text"
                     value={selectedComponent.customProps.borderColor || '#e5e7eb'}
                     onChange={(e) => updateComponentProps(selectedComponent.id, { borderColor: e.target.value })}
-                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none font-mono text-sm transition-all"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none font-mono text-sm transition-all bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
                     placeholder="#e5e7eb"
                   />
                 </div>
               </div>
 
               {/* Custom Text */}
-              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
-                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   Custom Text
                 </label>
                 <textarea
                   value={selectedComponent.customProps.text || ''}
                   onChange={(e) => updateComponentProps(selectedComponent.id, { text: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none transition-all"
+                  className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none transition-all bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
                   rows={4}
                   placeholder="Enter custom text here..."
                 />
               </div>
 
               {/* Info Note */}
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+              <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
                 <div className="flex gap-3">
-                  <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p className="text-xs text-blue-800 leading-relaxed">
+                  <p className="text-xs text-blue-800 dark:text-blue-300 leading-relaxed">
                     Your customizations will be reflected in the exported code. Changes are saved automatically.
                   </p>
                 </div>
@@ -555,25 +555,25 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
             </div>
           ) : (
             <div>
-              <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-slate-200 mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="text-center py-12 bg-white dark:bg-slate-800 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-600 mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                   </svg>
                 </div>
-                <p className="text-slate-700 font-semibold mb-2">No Component Selected</p>
-                <p className="text-slate-500 text-sm px-8">
+                <p className="text-slate-700 dark:text-slate-200 font-semibold mb-2">No Component Selected</p>
+                <p className="text-slate-500 dark:text-slate-400 text-sm px-8">
                   Click on any component in the canvas to start customizing
                 </p>
               </div>
 
               {/* What You Can Customize */}
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-blue-100 dark:border-blue-800">
                 <div className="flex items-center gap-2 mb-4">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <h3 className="font-bold text-slate-800">What You Can Customize</h3>
+                  <h3 className="font-bold text-slate-800 dark:text-slate-100">What You Can Customize</h3>
                 </div>
 
                 <div className="space-y-3">
@@ -584,8 +584,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-slate-800">Background Color</p>
-                      <p className="text-xs text-slate-600">Change the background color of your component</p>
+                      <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">Background Color</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">Change the background color of your component</p>
                     </div>
                   </div>
 
@@ -596,8 +596,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-slate-800">Text Color</p>
-                      <p className="text-xs text-slate-600">Modify text and typography colors</p>
+                      <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">Text Color</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">Modify text and typography colors</p>
                     </div>
                   </div>
 
@@ -608,8 +608,8 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-slate-800">Border Color</p>
-                      <p className="text-xs text-slate-600">Adjust border and outline colors</p>
+                      <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">Border Color</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">Adjust border and outline colors</p>
                     </div>
                   </div>
 
@@ -620,15 +620,15 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm text-slate-800">Custom Text</p>
-                      <p className="text-xs text-slate-600">Edit text content and labels</p>
+                      <p className="font-semibold text-sm text-slate-800 dark:text-slate-200">Custom Text</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400">Edit text content and labels</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-5 pt-5 border-t border-purple-200">
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    <span className="font-semibold text-slate-800">💡 Pro Tip:</span> All your customizations will be automatically included in the exported code!
+                <div className="mt-5 pt-5 border-t border-purple-200 dark:border-purple-800">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">💡 Pro Tip:</span> All your customizations will be automatically included in the exported code!
                   </p>
                 </div>
               </div>

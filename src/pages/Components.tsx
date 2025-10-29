@@ -13,11 +13,11 @@ const Components: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-800 flex">
       {/* Left Sidebar - Categories */}
-      <div className="hidden md:block md:w-64 bg-white shadow-lg border-r border-gray-200 overflow-y-auto fixed left-0 top-16 bottom-0">
+      <div className="hidden md:block md:w-64 bg-white dark:bg-slate-900 shadow-lg border-r border-gray-200 dark:border-slate-700 overflow-y-auto fixed left-0 top-16 bottom-0">
         <div className="p-6">
-          <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Components</h2>
+          <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Components</h2>
           <nav className="space-y-1">
             {componentCategories.map((category) => (
               <button
@@ -26,7 +26,7 @@ const Components: React.FC = () => {
                 className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                   selectedCategory === category
                     ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
                 }`}
               >
                 {category}
@@ -41,11 +41,11 @@ const Components: React.FC = () => {
         <div className="w-full max-w-full">
           {/* Mobile Category Selector */}
           <div className="md:hidden mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Select Category</label>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 font-medium"
+              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100 font-medium"
             >
               {componentCategories.map((category) => (
                 <option key={category} value={category}>
@@ -56,8 +56,8 @@ const Components: React.FC = () => {
           </div>
 
           <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 break-words">{selectedCategory}</h1>
-            <p className="text-gray-600 text-sm sm:text-base">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 break-words">{selectedCategory}</h1>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
               Click the copy icon to get the code for any component
             </p>
           </div>
@@ -67,12 +67,12 @@ const Components: React.FC = () => {
             {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
               <div
                 key={index}
-                className={`break-inside-avoid bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg transition-all group max-w-full ${
+                className={`break-inside-avoid bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg transition-all group max-w-full ${
                   selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
                 }`}
               >
                 {/* Component Preview */}
-                <div className={`relative bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center ${
+                <div className={`relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center ${
                   selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
                 } ${
                   selectedCategory === 'Headers' || selectedCategory === 'Footers'
@@ -85,7 +85,7 @@ const Components: React.FC = () => {
                     className={`absolute top-2 right-2 p-2 rounded-lg transition-all z-10 ${
                       copiedIndex === index
                         ? 'bg-green-500 text-white shadow-lg scale-110'
-                        : 'bg-white/90 text-gray-700 hover:bg-white shadow-md opacity-0 group-hover:opacity-100'
+                        : 'bg-white/90 dark:bg-slate-900/90 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-900 shadow-md opacity-0 group-hover:opacity-100'
                     }`}
                     title="Copy code"
                   >
@@ -109,8 +109,8 @@ const Components: React.FC = () => {
                 </div>
 
                 {/* Component Name */}
-                <div className="p-4 bg-white">
-                  <h3 className="text-sm font-semibold text-gray-800 text-center">
+                <div className="p-4 bg-white dark:bg-slate-900">
+                  <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 text-center">
                     {component.name}
                   </h3>
                 </div>
