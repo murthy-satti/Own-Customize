@@ -98,7 +98,7 @@ const SortableItem: React.FC<SortableItemProps> = ({ id, component, onRemove, on
 };
 
 const Customize: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('Buttons');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [pageComponents, setPageComponents] = useState<PageComponent[]>([]);
   const [selectedComponentId, setSelectedComponentId] = useState<string | null>(null);
   const [showCode, setShowCode] = useState(false);
@@ -162,7 +162,7 @@ const Customize: React.FC = () => {
     return `export default function MyPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 space-y-6">
+      <div className="w-full px-4 space-y-6">
 ${componentCodes.split('\n').map(line => '        ' + line).join('\n')}
       </div>
     </div>
@@ -179,54 +179,68 @@ ${componentCodes.split('\n').map(line => '        ' + line).join('\n')}
     <div className="min-h-screen bg-slate-50 flex">
       {/* Left Sidebar - Component Library */}
       <div className="w-96 bg-white shadow-lg overflow-y-auto border-r border-slate-200">
-        <div className="p-6 border-b border-slate-200 sticky top-0 bg-white z-10">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Component Library</h2>
+        <div className="p-4">
+          <h2 className="text-xl font-bold text-slate-800 mb-4 px-2">Component Library</h2>
 
-          {/* Category Tabs */}
-          <div className="flex flex-col gap-2">
+          {/* Categories with Expandable Components */}
+          <div className="space-y-2">
             {componentCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2.5 rounded-lg font-medium text-left transition-all ${
-                  selectedCategory === category
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md'
-                    : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200'
-                }`}
-              >
-                {category}
-              </button>
+              <div key={category}>
+                {/* Category Button */}
+                <button
+                  onClick={() => setSelectedCategory(selectedCategory === category ? '' : category)}
+                  className={`w-full px-4 py-2.5 rounded-lg font-medium text-left transition-all ${
+                    selectedCategory === category
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  }`}
+                >
+                  {category}
+                </button>
+
+                {/* Component List - Shows when category is selected */}
+                {selectedCategory === category && (
+                  <div className="mt-2 mb-2 space-y-3 pl-2">
+                    {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
+                      <div
+                        key={index}
+                        className="border border-slate-200 rounded-lg p-3 hover:border-blue-400 hover:shadow-md transition-all bg-white"
+                      >
+                        <div className={`mb-3 flex items-center justify-center bg-slate-50 rounded-lg overflow-hidden ${
+                          selectedCategory === 'Headers' || selectedCategory === 'Footers'
+                            ? 'min-h-[100px] p-1'
+                            : 'min-h-[80px] p-3'
+                        }`}>
+                          <div className={`${
+                            selectedCategory === 'Headers' || selectedCategory === 'Footers'
+                              ? 'scale-[0.35] w-full'
+                              : ''
+                          }`}>
+                            {component.preview}
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center pt-2 border-t border-slate-100">
+                          <span className="text-sm font-semibold text-slate-700">{component.name}</span>
+                          <button
+                            onClick={() => addComponentToPage(component, selectedCategory)}
+                            className="px-3 py-1.5 bg-blue-600 text-white text-xs rounded-lg hover:bg-blue-700 transition-all font-medium"
+                          >
+                            + Add
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
-        </div>
-
-        {/* Component List with Previews */}
-        <div className="p-4 space-y-3 bg-slate-50">
-          {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
-            <div
-              key={index}
-              className="border border-slate-200 rounded-lg p-4 hover:border-blue-400 hover:shadow-md transition-all bg-white"
-            >
-              <div className="mb-3 flex items-center justify-center min-h-[80px] bg-slate-50 rounded-lg p-3">
-                {component.preview}
-              </div>
-              <div className="flex justify-between items-center pt-3 border-t border-slate-100">
-                <span className="text-sm font-semibold text-slate-700">{component.name}</span>
-                <button
-                  onClick={() => addComponentToPage(component, selectedCategory)}
-                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm rounded-lg hover:shadow-lg transition-all font-medium"
-                >
-                  + Add
-                </button>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
       {/* Center - Canvas Area */}
       <div className="flex-1 p-6 overflow-y-auto">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full">
           <div className="bg-white rounded-xl shadow-md p-6 mb-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-slate-800">
@@ -352,7 +366,7 @@ ${componentCodes.split('\n').map(line => '        ' + line).join('\n')}
                 {/* Preview Content */}
                 <div className="flex-1 overflow-y-auto bg-gray-50 p-8">
                   <div className="min-h-screen bg-gray-50 py-8">
-                    <div className="max-w-7xl mx-auto px-4 space-y-6">
+                    <div className="w-full px-4 space-y-6">
                       {pageComponents.map((component) => (
                         <div key={component.id}>
                           {component.element}
@@ -368,112 +382,214 @@ ${componentCodes.split('\n').map(line => '        ' + line).join('\n')}
       </div>
 
       {/* Right Sidebar - Customization Panel */}
-      <div className="w-96 bg-white shadow-lg overflow-y-auto border-l border-slate-200">
+      <div className="w-96 bg-gradient-to-br from-slate-50 to-white shadow-lg overflow-y-auto border-l border-slate-200">
         <div className="p-6">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Customize</h2>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-800">Customize</h2>
+              <p className="text-xs text-slate-500">Style your component</p>
+            </div>
+          </div>
 
           {selectedComponent ? (
-            <div className="space-y-4">
-              <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                <p className="text-sm font-medium text-blue-900">Selected Component</p>
-                <p className="text-lg font-bold text-blue-700">{selectedComponent.type}</p>
+            <div className="space-y-5">
+              {/* Selected Component Info */}
+              <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-4 text-white shadow-lg">
+                <div className="flex items-center gap-2 mb-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-xs font-medium opacity-90">Selected Component</p>
+                </div>
+                <p className="text-lg font-bold">{selectedComponent.type}</p>
               </div>
 
               {/* Background Color */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   Background Color
                 </label>
-                <div className="flex gap-2">
-                  <input
-                    type="color"
-                    value={selectedComponent.customProps.bgColor || '#ffffff'}
-                    onChange={(e) => updateComponentProps(selectedComponent.id, { bgColor: e.target.value })}
-                    className="w-12 h-10 rounded border border-gray-300 cursor-pointer"
-                  />
+                <div className="flex gap-3">
+                  <div className="relative">
+                    <input
+                      type="color"
+                      value={selectedComponent.customProps.bgColor || '#ffffff'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { bgColor: e.target.value })}
+                      className="w-14 h-14 rounded-xl border-2 border-slate-300 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                    />
+                  </div>
                   <input
                     type="text"
                     value={selectedComponent.customProps.bgColor || '#ffffff'}
                     onChange={(e) => updateComponentProps(selectedComponent.id, { bgColor: e.target.value })}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none font-mono text-sm transition-all"
                     placeholder="#ffffff"
                   />
                 </div>
               </div>
 
               {/* Text Color */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                   Text Color
                 </label>
-                <div className="flex gap-2">
-                  <input
-                    type="color"
-                    value={selectedComponent.customProps.textColor || '#000000'}
-                    onChange={(e) => updateComponentProps(selectedComponent.id, { textColor: e.target.value })}
-                    className="w-12 h-10 rounded border border-gray-300 cursor-pointer"
-                  />
+                <div className="flex gap-3">
+                  <div className="relative">
+                    <input
+                      type="color"
+                      value={selectedComponent.customProps.textColor || '#000000'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { textColor: e.target.value })}
+                      className="w-14 h-14 rounded-xl border-2 border-slate-300 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                    />
+                  </div>
                   <input
                     type="text"
                     value={selectedComponent.customProps.textColor || '#000000'}
                     onChange={(e) => updateComponentProps(selectedComponent.id, { textColor: e.target.value })}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-mono text-sm transition-all"
                     placeholder="#000000"
                   />
                 </div>
               </div>
 
               {/* Border Color */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+                  <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
                   Border Color
                 </label>
-                <div className="flex gap-2">
-                  <input
-                    type="color"
-                    value={selectedComponent.customProps.borderColor || '#e5e7eb'}
-                    onChange={(e) => updateComponentProps(selectedComponent.id, { borderColor: e.target.value })}
-                    className="w-12 h-10 rounded border border-gray-300 cursor-pointer"
-                  />
+                <div className="flex gap-3">
+                  <div className="relative">
+                    <input
+                      type="color"
+                      value={selectedComponent.customProps.borderColor || '#e5e7eb'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { borderColor: e.target.value })}
+                      className="w-14 h-14 rounded-xl border-2 border-slate-300 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                    />
+                  </div>
                   <input
                     type="text"
                     value={selectedComponent.customProps.borderColor || '#e5e7eb'}
                     onChange={(e) => updateComponentProps(selectedComponent.id, { borderColor: e.target.value })}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none font-mono text-sm transition-all"
                     placeholder="#e5e7eb"
                   />
                 </div>
               </div>
 
               {/* Custom Text */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 mb-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   Custom Text
                 </label>
                 <textarea
                   value={selectedComponent.customProps.text || ''}
                   onChange={(e) => updateComponentProps(selectedComponent.id, { text: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
-                  rows={3}
-                  placeholder="Enter custom text..."
+                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none transition-all"
+                  rows={4}
+                  placeholder="Enter custom text here..."
                 />
               </div>
 
-              <div className="pt-4 border-t">
-                <p className="text-xs text-gray-500">
-                  Note: Color and text customization will be reflected in the exported code.
-                </p>
+              {/* Info Note */}
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                <div className="flex gap-3">
+                  <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-xs text-blue-800 leading-relaxed">
+                    Your customizations will be reflected in the exported code. Changes are saved automatically.
+                  </p>
+                </div>
               </div>
             </div>
           ) : (
-            <div className="text-center py-12">
-              <svg className="w-16 h-16 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-              </svg>
-              <p className="text-gray-500 font-medium">No component selected</p>
-              <p className="text-gray-400 text-sm mt-2">
-                Click on a component in the canvas to customize it
-              </p>
+            <div>
+              <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-slate-200 mb-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                  </svg>
+                </div>
+                <p className="text-slate-700 font-semibold mb-2">No Component Selected</p>
+                <p className="text-slate-500 text-sm px-8">
+                  Click on any component in the canvas to start customizing
+                </p>
+              </div>
+
+              {/* What You Can Customize */}
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
+                <div className="flex items-center gap-2 mb-4">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <h3 className="font-bold text-slate-800">What You Can Customize</h3>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-slate-800">Background Color</p>
+                      <p className="text-xs text-slate-600">Change the background color of your component</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-slate-800">Text Color</p>
+                      <p className="text-xs text-slate-600">Modify text and typography colors</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-slate-800">Border Color</p>
+                      <p className="text-xs text-slate-600">Adjust border and outline colors</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-slate-800">Custom Text</p>
+                      <p className="text-xs text-slate-600">Edit text content and labels</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-5 border-t border-purple-200">
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    <span className="font-semibold text-slate-800">💡 Pro Tip:</span> All your customizations will be automatically included in the exported code!
+                  </p>
+                </div>
+              </div>
             </div>
           )}
         </div>

@@ -1,21 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/ui/Navbar';
+import Footer from './components/ui/Footer';
 import Home from './pages/Home';
 import Components from './pages/Components';
 import Customize from './pages/Customize';
 
+function AppContent() {
+  const location = useLocation();
+  const showFooter = location.pathname === '/';
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/components" element={<Components />} />
+        <Route path="/customize" element={<Customize />} />
+      </Routes>
+      {showFooter && <Footer />}
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/components" element={<Components />} />
-          <Route path="/customize" element={<Customize />} />
-        </Routes>
-      </div>
+      <AppContent />
     </Router>
   );
 }
