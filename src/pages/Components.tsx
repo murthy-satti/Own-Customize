@@ -15,7 +15,7 @@ const Components: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Left Sidebar - Categories */}
-      <div className="w-64 bg-white shadow-lg border-r border-gray-200 overflow-y-auto fixed left-0 top-16 bottom-0">
+      <div className="hidden md:block md:w-64 bg-white shadow-lg border-r border-gray-200 overflow-y-auto fixed left-0 top-16 bottom-0">
         <div className="p-6">
           <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Components</h2>
           <nav className="space-y-1">
@@ -37,24 +37,44 @@ const Components: React.FC = () => {
       </div>
 
       {/* Right Content Area */}
-      <div className="ml-64 flex-1 p-8">
-        <div className="w-full">
+      <div className="md:ml-64 flex-1 p-4 sm:p-6 lg:p-8 max-w-full overflow-x-hidden">
+        <div className="w-full max-w-full">
+          {/* Mobile Category Selector */}
+          <div className="md:hidden mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900 font-medium"
+            >
+              {componentCategories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">{selectedCategory}</h1>
-            <p className="text-gray-600">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 break-words">{selectedCategory}</h1>
+            <p className="text-gray-600 text-sm sm:text-base">
               Click the copy icon to get the code for any component
             </p>
           </div>
 
           {/* Components Masonry Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
             {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
               <div
                 key={index}
-                className="break-inside-avoid bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all group"
+                className={`break-inside-avoid bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg transition-all group max-w-full ${
+                  selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
+                }`}
               >
                 {/* Component Preview */}
                 <div className={`relative bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center ${
+                  selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
+                } ${
                   selectedCategory === 'Headers' || selectedCategory === 'Footers'
                     ? 'p-2'
                     : 'p-3'
@@ -79,7 +99,9 @@ const Components: React.FC = () => {
                   {/* Component Display */}
                   <div className={`${
                     selectedCategory === 'Headers' || selectedCategory === 'Footers'
-                      ? 'scale-50 w-full'
+                      ? 'scale-50 w-full origin-top'
+                      : selectedCategory === 'Tables'
+                      ? 'w-full min-w-fit'
                       : ''
                   }`}>
                     {component.preview}

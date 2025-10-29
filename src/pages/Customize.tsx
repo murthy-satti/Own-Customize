@@ -197,9 +197,9 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-slate-50 flex flex-col lg:flex-row overflow-x-hidden">
       {/* Left Sidebar - Component Library */}
-      <div className="w-96 bg-white shadow-lg overflow-y-auto border-r border-slate-200">
+      <div className="w-full lg:w-80 xl:w-96 bg-white shadow-lg overflow-y-auto border-b lg:border-r lg:border-b-0 border-slate-200 max-h-96 lg:max-h-screen">
         <div className="p-4">
           <h2 className="text-xl font-bold text-slate-800 mb-4 px-2">Component Library</h2>
 
@@ -260,18 +260,18 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
       </div>
 
       {/* Center - Canvas Area */}
-      <div className="flex-1 p-6 overflow-y-auto">
-        <div className="w-full">
-          <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-4">
-                <h2 className="text-2xl font-bold text-slate-800">
-                  Canvas <span className="text-lg font-normal text-slate-500">({pageComponents.length} components)</span>
+      <div className="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden max-w-full">
+        <div className="w-full max-w-full">
+          <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-6 max-w-full overflow-hidden">
+            <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 break-words">
+                  Canvas <span className="text-base sm:text-lg font-normal text-slate-500">({pageComponents.length})</span>
                 </h2>
 
                 {/* Semantic HTML Toggle */}
-                <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5">
-                  <span className="text-sm text-slate-600 font-medium">Semantic HTML</span>
+                <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-2 sm:px-3 py-1.5">
+                  <span className="text-xs sm:text-sm text-slate-600 font-medium whitespace-nowrap">Semantic</span>
                   <button
                     onClick={() => setUseSemanticHTML(!useSemanticHTML)}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
@@ -378,10 +378,10 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
 
           {/* Code Preview */}
           {showCode && (
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">Generated Code</h2>
-              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre className="text-sm text-gray-100">
+            <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 max-w-full overflow-hidden">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">Generated Code</h2>
+              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto max-w-full">
+                <pre className="text-xs sm:text-sm text-gray-100 whitespace-pre-wrap break-words">
                   <code>{generateFullPageCode()}</code>
                 </pre>
               </div>
@@ -424,7 +424,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
       </div>
 
       {/* Right Sidebar - Customization Panel */}
-      <div className="w-96 bg-gradient-to-br from-slate-50 to-white shadow-lg overflow-y-auto border-l border-slate-200">
+      <div className="w-full lg:w-80 xl:w-96 bg-gradient-to-br from-slate-50 to-white shadow-lg overflow-y-auto border-t lg:border-l lg:border-t-0 border-slate-200 max-h-screen">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">

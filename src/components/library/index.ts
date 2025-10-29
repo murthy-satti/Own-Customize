@@ -1,6 +1,8 @@
 export * from './Buttons';
 export * from './TextInputs';
-export * from './Selections';
+export * from './Checkboxes';
+export * from './Radios';
+export * from './Selects';
 export * from './Sliders';
 export * from './Forms';
 export * from './Cards';
@@ -17,7 +19,9 @@ export * from './Hamburgers';
 
 import { buttonComponents } from './Buttons';
 import { textInputComponents } from './TextInputs';
-import { selectionComponents } from './Selections';
+import { checkboxComponents } from './Checkboxes';
+import { radioComponents } from './Radios';
+import { selectComponents } from './Selects';
 import { sliderComponents } from './Sliders';
 import { formComponents } from './Forms';
 import { cardComponents } from './Cards';
@@ -35,7 +39,9 @@ import { hamburgerComponents } from './Hamburgers';
 export const allComponents = {
   Buttons: buttonComponents,
   'Text Inputs': textInputComponents,
-  Selections: selectionComponents,
+  Checkboxes: checkboxComponents,
+  Radios: radioComponents,
+  Selects: selectComponents,
   Sliders: sliderComponents,
   Forms: formComponents,
   Cards: cardComponents,
@@ -54,7 +60,9 @@ export const allComponents = {
 export const componentCategories = [
   'Buttons',
   'Text Inputs',
-  'Selections',
+  'Checkboxes',
+  'Radios',
+  'Selects',
   'Sliders',
   'Forms',
   'Cards',

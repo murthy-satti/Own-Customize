@@ -9,19 +9,19 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+    <nav className="bg-white shadow-md sticky top-0 z-50 overflow-x-hidden">
+      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-full">
+        <div className="flex flex-wrap justify-between items-center min-h-16 py-2 gap-2">
+          <Link to="/" className="flex items-center flex-shrink-0">
+            <span className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 whitespace-nowrap">
               Quick UI Studio
             </span>
           </Link>
 
-          <div className="flex space-x-8">
+          <div className="flex flex-wrap gap-2 sm:gap-4 lg:gap-8">
             <Link
               to="/"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                 isActive('/')
                   ? 'text-blue-600 bg-blue-50'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/components"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                 isActive('/components')
                   ? 'text-blue-600 bg-blue-50'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/customize"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                 isActive('/customize')
                   ? 'text-blue-600 bg-blue-50'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
