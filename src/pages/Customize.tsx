@@ -103,6 +103,7 @@ const Customize: React.FC = () => {
   const [selectedComponentId, setSelectedComponentId] = useState<string | null>(null);
   const [showCode, setShowCode] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [useSemanticHTML, setUseSemanticHTML] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -152,22 +153,42 @@ const Customize: React.FC = () => {
 
   const selectedComponent = pageComponents.find(c => c.id === selectedComponentId);
 
+  // Helper function to get semantic HTML tag for a component category
+  const getSemanticTag = (category: string): string => {
+    const semanticMapping: { [key: string]: string } = {
+      'Headers': 'header',
+      'Footers': 'footer',
+      'Navigation': 'nav',
+      'Cards': 'article',
+      'Data Display': 'section',
+      'Tables': 'section',
+      'Forms': 'form',
+    };
+    return semanticMapping[category] || 'div';
+  };
+
   const generateFullPageCode = () => {
     if (pageComponents.length === 0) {
       return '// No components added yet. Add components from the library to generate code.';
     }
 
-    const componentCodes = pageComponents.map((comp) => comp.code).join('\n\n');
+    const componentCodes = pageComponents.map((comp) => {
+      if (useSemanticHTML) {
+        const tag = getSemanticTag(comp.category);
+        // Wrap the component code in semantic tag
+        const indentedCode = comp.code.split('\n').map(line => '  ' + line).join('\n');
+        return `<${tag}>\n${indentedCode}\n</${tag}>`;
+      }
+      return comp.code;
+    }).join('\n\n');
 
-    return `export default function MyPage() {
-  return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="w-full px-4 space-y-6">
-${componentCodes.split('\n').map(line => '        ' + line).join('\n')}
-      </div>
-    </div>
-  );
-}`;
+    const containerTag = useSemanticHTML ? 'main' : 'div';
+
+    return `<${containerTag} className="min-h-screen bg-gray-50 py-8">
+  <div className="w-full px-4 space-y-6">
+${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
+  </div>
+</${containerTag}>`;
   };
 
   const handleCopyCode = () => {
@@ -243,9 +264,30 @@ ${componentCodes.split('\n').map(line => '        ' + line).join('\n')}
         <div className="w-full">
           <div className="bg-white rounded-xl shadow-md p-6 mb-6">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-slate-800">
-                Canvas <span className="text-lg font-normal text-slate-500">({pageComponents.length} components)</span>
-              </h2>
+              <div className="flex items-center gap-4">
+                <h2 className="text-2xl font-bold text-slate-800">
+                  Canvas <span className="text-lg font-normal text-slate-500">({pageComponents.length} components)</span>
+                </h2>
+
+                {/* Semantic HTML Toggle */}
+                <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5">
+                  <span className="text-sm text-slate-600 font-medium">Semantic HTML</span>
+                  <button
+                    onClick={() => setUseSemanticHTML(!useSemanticHTML)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      useSemanticHTML ? 'bg-blue-600' : 'bg-slate-300'
+                    }`}
+                    title={useSemanticHTML ? 'Using semantic tags (header, footer, nav, etc.)' : 'Using div tags'}
+                  >
+                    <span
+                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        useSemanticHTML ? 'translate-x-6' : 'translate-x-1'
+                      }`}
+                    />
+                  </button>
+                </div>
+              </div>
+
               <div className="flex gap-1 items-center bg-slate-100 rounded-lg p-1.5 shadow-sm border border-slate-200">
                 {/* Preview Icon */}
                 <button
