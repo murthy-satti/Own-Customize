@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
           <div className="flex flex-wrap gap-2 sm:gap-4 lg:gap-8 items-center">
             <Link
               to="/"
-              className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-base font-semibold transition-colors whitespace-nowrap ${
                 isActive('/')
                   ? 'text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-slate-800'
@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/components"
-              className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-base font-semibold transition-colors whitespace-nowrap ${
                 isActive('/components')
                   ? 'text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-slate-800'
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/customize"
-              className={`px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-base font-semibold transition-colors whitespace-nowrap ${
                 isActive('/customize')
                   ? 'text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-slate-800'

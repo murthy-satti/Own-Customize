@@ -57,7 +57,7 @@ const Components: React.FC = () => {
 
           <div className="mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 break-words">{selectedCategory}</h1>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
               Click the copy icon to get the code for any component
             </p>
           </div>
@@ -67,12 +67,12 @@ const Components: React.FC = () => {
             {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
               <div
                 key={index}
-                className={`break-inside-avoid bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg transition-all group max-w-full ${
+                className={`break-inside-avoid  rounded-2xl   dark:border-slate-700 hover:shadow-lg transition-all group max-w-full ${
                   selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
                 }`}
               >
                 {/* Component Preview */}
-                <div className={`relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center ${
+                <div className={`relative  flex items-center justify-center ${
                   selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
                 } ${
                   selectedCategory === 'Headers' || selectedCategory === 'Footers'
@@ -84,8 +84,8 @@ const Components: React.FC = () => {
                     onClick={() => handleCopyCode(component.code, index)}
                     className={`absolute top-2 right-2 p-2 rounded-lg transition-all z-10 ${
                       copiedIndex === index
-                        ? 'bg-green-500 text-white shadow-lg scale-110'
-                        : 'bg-white/90 dark:bg-slate-900/90 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-900 shadow-md opacity-0 group-hover:opacity-100'
+                        ? 'bg-green-500 text-transparent  scale-110'
+                        : 'bg-white/90 dark:bg-slate-900/90 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-900  opacity-0 group-hover:opacity-100'
                     }`}
                     title="Copy code"
                   >
@@ -109,11 +109,11 @@ const Components: React.FC = () => {
                 </div>
 
                 {/* Component Name */}
-                <div className="p-4 bg-white dark:bg-slate-900">
+                {/* <div className="p-4 bg-transparent dark:bg-slate-900">
                   <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 text-center">
                     {component.name}
                   </h3>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
