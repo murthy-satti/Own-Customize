@@ -57,7 +57,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Features Section */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-20 bg-gray-50 dark:bg-slate-800">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-20 bg-slate-100 dark:bg-slate-800">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
@@ -169,10 +169,10 @@ const Home: React.FC = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-20 bg-gray-50 dark:bg-slate-800">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-20 bg-slate-100 dark:bg-slate-800">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white dark:bg-slate-900 rounded-lg p-8 border border-gray-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-900 rounded-lg p-8 border border-gray-300 dark:border-slate-700">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Zap className="w-6 h-6 text-white" />
@@ -208,9 +208,9 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-gray-900 dark:bg-slate-950 rounded-lg p-8 text-white flex flex-col justify-center border border-gray-800 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-900 rounded-lg p-8 text-gray-900 dark:text-gray-200 flex flex-col justify-center border border-gray-300 dark:border-slate-700">
               <h3 className="text-3xl font-bold mb-4">Get Started</h3>
-              <p className="text-gray-300 dark:text-gray-400 mb-6 text-lg">
+              <p className="text-gray-800 dark:text-gray-400 mb-6 text-lg">
                 Join development teams building efficient, scalable applications.
               </p>
               <ul className="space-y-3 mb-8">
@@ -244,19 +244,19 @@ const Home: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-700 dark:bg-blue-900 py-20 border-t border-blue-800 dark:border-blue-950">
+      <div className="bg-white dark:bg-slate-900 py-20 border-t border-gray-200 dark:border-blue-950">
         <div className="w-full px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-gray-100 mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-blue-100 dark:text-blue-200 mb-10 text-xl max-w-2xl mx-auto">
+            <p className="text-gray-800 dark:text-blue-200 mb-10 text-xl max-w-2xl mx-auto">
               Streamline your development process and build professional interfaces efficiently.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link
                 to="/customize"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-lg"
+                className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-500 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all "
               >
                 <Zap className="w-5 h-5" />
                 Start Building
@@ -264,7 +264,7 @@ const Home: React.FC = () => {
               </Link>
               <Link
                 to="/components"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-700 dark:hover:text-blue-900 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-500 text-gray-900 dark:text-gray-300 font-semibold rounded-lg hover:bg-white hover:text-blue-700 dark:hover:text-blue-900 transition-all"
               >
                 <Package className="w-5 h-5" />
                 View Components

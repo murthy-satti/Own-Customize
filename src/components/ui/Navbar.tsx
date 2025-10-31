@@ -12,9 +12,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-slate-900 shadow-md fixed top-0 left-0 right-0 z-50 overflow-x-hidden">
-      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-full">
-        <div className="flex flex-wrap justify-between items-center min-h-16 py-2 gap-2">
+    <nav className="bg-white dark:bg-[#000824]  shadow-md fixed top-0 left-0 right-0 z-50 overflow-x-hidden ">
+      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-full dark:border-b border-gray-600">
+        <div className="flex flex-wrap justify-between items-center min-h-16 py-2 gap-2 ">
           <Link to="/" className="flex items-center flex-shrink-0">
             <span className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 whitespace-nowrap">
               Quick UI Studio
@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
           <div className="flex flex-wrap gap-2 sm:gap-4 lg:gap-8 items-center">
             <Link
               to="/"
-              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-base font-semibold transition-colors whitespace-nowrap ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-xl font-semibold transition-colors whitespace-nowrap ${
                 isActive('/')
                   ? 'text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-slate-800'
@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/components"
-              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-base font-semibold transition-colors whitespace-nowrap ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-xl font-semibold transition-colors whitespace-nowrap ${
                 isActive('/components')
                   ? 'text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-slate-800'
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/customize"
-              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-base font-semibold transition-colors whitespace-nowrap ${
+              className={`px-2 sm:px-3 py-2 rounded-md text-sm sm:text-xl font-semibold transition-colors whitespace-nowrap ${
                 isActive('/customize')
                   ? 'text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800'
                   : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-slate-800'

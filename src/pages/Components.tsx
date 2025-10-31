@@ -13,7 +13,7 @@ const Components: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-800 flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 flex">
       {/* Left Sidebar - Categories */}
       <div className="hidden md:block md:w-64 bg-white dark:bg-slate-900 shadow-lg border-r border-gray-200 dark:border-slate-700 overflow-y-auto fixed left-0 top-16 bottom-0">
         <div className="p-6">
