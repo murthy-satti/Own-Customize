@@ -29,6 +29,24 @@ interface PageComponent {
     textColor?: string;
     borderColor?: string;
     text?: string;
+    // Layout properties
+    width?: string;
+    height?: string;
+    maxWidth?: string;
+    minHeight?: string;
+    // Spacing properties
+    marginTop?: string;
+    marginRight?: string;
+    marginBottom?: string;
+    marginLeft?: string;
+    paddingTop?: string;
+    paddingRight?: string;
+    paddingBottom?: string;
+    paddingLeft?: string;
+    // Alignment
+    alignment?: 'left' | 'center' | 'right' | 'justify';
+    // Display
+    display?: string;
   };
 }
 
@@ -54,27 +72,29 @@ const SortableItem: React.FC<SortableItemProps> = ({ id, component, onRemove, on
     transform: CSS.Transform.toString(transform),
     transition,
     opacity: isDragging ? 0.5 : 1,
+    zIndex: isDragging ? 50 : 'auto',
   };
 
   return (
     <div
       ref={setNodeRef}
       style={style}
-      onClick={() => onSelect(id)}
-      className={`relative group bg-white dark:bg-slate-900 rounded-lg p-4 mb-3 cursor-pointer transition-all ${
+      className={`relative group bg-white dark:bg-slate-900 rounded-lg p-4 cursor-pointer transition-all w-full ${
         isSelected ? 'ring-2 ring-blue-500 shadow-lg' : 'border-2 border-gray-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500'
       }`}
     >
       {/* Drag Handle */}
-      <div
+      <button
         {...attributes}
         {...listeners}
-        className="absolute left-2 top-2 cursor-grab active:cursor-grabbing bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 rounded p-2 transition-colors z-10"
+        className="absolute left-2 top-2 cursor-grab active:cursor-grabbing bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 rounded p-2.5 transition-colors z-20 touch-none"
+        title="Drag to reorder"
+        type="button"
       >
-        <svg className="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
         </svg>
-      </div>
+      </button>
 
       {/* Remove Button */}
       <button
@@ -82,16 +102,57 @@ const SortableItem: React.FC<SortableItemProps> = ({ id, component, onRemove, on
           e.stopPropagation();
           onRemove(id);
         }}
-        className="absolute right-2 top-2 bg-red-100 dark:bg-red-900 hover:bg-red-200 dark:hover:bg-red-800 text-red-600 dark:text-red-300 rounded p-2 transition-colors z-10"
+        className="absolute right-2 top-2 bg-red-100 dark:bg-red-900 hover:bg-red-200 dark:hover:bg-red-800 text-red-600 dark:text-red-300 rounded p-2.5 transition-colors z-20"
+        title="Remove component"
+        type="button"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
-      {/* Component Preview */}
-      <div className="pt-8 flex items-center justify-center">
-        {component.element}
+      {/* Component Preview - Wrapper handles spacing & layout */}
+      <div
+        className="pt-10"
+        onClick={() => onSelect(id)}
+        style={{
+          // Layout properties on wrapper
+          width: component.customProps.width || '100%',
+          display: component.customProps.display || 'block',
+          marginInline: component.customProps.alignment === 'center' ? 'auto' :
+                       component.customProps.alignment === 'right' ? '0 0 0 auto' :
+                       component.customProps.alignment === 'left' ? '0 auto 0 0' : 'initial',
+          // Margins on wrapper - creates space BETWEEN components
+          marginTop: component.customProps.marginTop || '0',
+          marginRight: component.customProps.marginRight || '0',
+          marginBottom: component.customProps.marginBottom || '0',
+          marginLeft: component.customProps.marginLeft || '0',
+        }}
+      >
+        {React.isValidElement(component.element) ? (() => {
+            const elem = component.element as React.ReactElement<any>;
+            const existingStyle = typeof elem.props?.style === 'object' ? elem.props.style : {};
+
+            return React.cloneElement(elem, {
+              style: {
+                ...existingStyle,
+                // Colors
+                backgroundColor: component.customProps.bgColor || existingStyle?.backgroundColor,
+                color: component.customProps.textColor || existingStyle?.color,
+                borderColor: component.customProps.borderColor || existingStyle?.borderColor,
+                // Dimensions on component
+                width: '100%',
+                height: component.customProps.height || existingStyle?.height,
+                maxWidth: component.customProps.maxWidth && component.customProps.maxWidth !== 'none' ? component.customProps.maxWidth : existingStyle?.maxWidth,
+                minHeight: component.customProps.minHeight && component.customProps.minHeight !== 'auto' ? component.customProps.minHeight : existingStyle?.minHeight,
+                // Padding on component - creates space INSIDE component
+                paddingTop: component.customProps.paddingTop && component.customProps.paddingTop !== '0' ? component.customProps.paddingTop : existingStyle?.paddingTop,
+                paddingRight: component.customProps.paddingRight && component.customProps.paddingRight !== '0' ? component.customProps.paddingRight : existingStyle?.paddingRight,
+                paddingBottom: component.customProps.paddingBottom && component.customProps.paddingBottom !== '0' ? component.customProps.paddingBottom : existingStyle?.paddingBottom,
+                paddingLeft: component.customProps.paddingLeft && component.customProps.paddingLeft !== '0' ? component.customProps.paddingLeft : existingStyle?.paddingLeft,
+              }
+            });
+          })() : component.element}
       </div>
     </div>
   );
@@ -167,25 +228,92 @@ const Customize: React.FC = () => {
     return semanticMapping[category] || 'div';
   };
 
+  // Helper function to generate inline styles from custom props
+  const generateInlineStyles = (props: PageComponent['customProps']): string => {
+    const styles: string[] = [];
+
+    // Colors
+    if (props.bgColor) styles.push(`backgroundColor: '${props.bgColor}'`);
+    if (props.textColor) styles.push(`color: '${props.textColor}'`);
+    if (props.borderColor) styles.push(`borderColor: '${props.borderColor}'`);
+
+    // Dimensions
+    if (props.width) styles.push(`width: '${props.width}'`);
+    if (props.height) styles.push(`height: '${props.height}'`);
+    if (props.maxWidth && props.maxWidth !== 'none') styles.push(`maxWidth: '${props.maxWidth}'`);
+    if (props.minHeight && props.minHeight !== 'auto') styles.push(`minHeight: '${props.minHeight}'`);
+
+    // Margins
+    if (props.marginTop && props.marginTop !== '0') styles.push(`marginTop: '${props.marginTop}'`);
+    if (props.marginRight && props.marginRight !== '0') styles.push(`marginRight: '${props.marginRight}'`);
+    if (props.marginBottom && props.marginBottom !== '0') styles.push(`marginBottom: '${props.marginBottom}'`);
+    if (props.marginLeft && props.marginLeft !== '0') styles.push(`marginLeft: '${props.marginLeft}'`);
+
+    // Padding
+    if (props.paddingTop && props.paddingTop !== '0') styles.push(`paddingTop: '${props.paddingTop}'`);
+    if (props.paddingRight && props.paddingRight !== '0') styles.push(`paddingRight: '${props.paddingRight}'`);
+    if (props.paddingBottom && props.paddingBottom !== '0') styles.push(`paddingBottom: '${props.paddingBottom}'`);
+    if (props.paddingLeft && props.paddingLeft !== '0') styles.push(`paddingLeft: '${props.paddingLeft}'`);
+
+    // Alignment
+    if (props.alignment === 'center') styles.push(`marginInline: 'auto'`);
+    else if (props.alignment === 'right') styles.push(`marginInline: '0 0 0 auto'`);
+    else if (props.alignment === 'left') styles.push(`marginInline: '0 auto 0 0'`);
+
+    if (props.display) styles.push(`display: '${props.display}'`);
+
+    return styles.length > 0 ? ` style={{ ${styles.join(', ')} }}` : '';
+  };
+
   const generateFullPageCode = () => {
     if (pageComponents.length === 0) {
       return '// No components added yet. Add components from the library to generate code.';
     }
 
     const componentCodes = pageComponents.map((comp) => {
+      const styleAttr = generateInlineStyles(comp.customProps);
+
+      // Parse the component code to add inline styles to the root element
+      let componentCode = comp.code.trim();
+
+      if (styleAttr) {
+        // Find the first > after the opening tag and insert the style attribute before it
+        const firstTagEnd = componentCode.indexOf('>');
+        if (firstTagEnd !== -1) {
+          // Check if there's already a style attribute
+          const hasStyle = componentCode.substring(0, firstTagEnd).includes('style=');
+          if (hasStyle) {
+            // Merge with existing styles - replace the style attribute
+            componentCode = componentCode.replace(/style=\{[^}]*\}/, styleAttr.trim());
+          } else {
+            // Insert the style attribute before the closing >
+            componentCode = componentCode.substring(0, firstTagEnd) + styleAttr + componentCode.substring(firstTagEnd);
+          }
+        }
+      }
+
+      const indentedCode = componentCode.split('\n').map(line => '  ' + line).join('\n');
+
+      // Wrapper for alignment
+      const wrapperStyle: string[] = [];
+      if (comp.customProps.width) wrapperStyle.push(`width: '${comp.customProps.width}'`);
+      if (comp.customProps.alignment === 'center') wrapperStyle.push(`marginInline: 'auto'`);
+      else if (comp.customProps.alignment === 'right') wrapperStyle.push(`marginInline: '0 0 0 auto'`);
+      else if (comp.customProps.alignment === 'left') wrapperStyle.push(`marginInline: '0 auto 0 0'`);
+
+      const wrapperStyleAttr = wrapperStyle.length > 0 ? ` style={{ ${wrapperStyle.join(', ')} }}` : '';
+
       if (useSemanticHTML) {
         const tag = getSemanticTag(comp.category);
-        // Wrap the component code in semantic tag
-        const indentedCode = comp.code.split('\n').map(line => '  ' + line).join('\n');
-        return `<${tag}>\n${indentedCode}\n</${tag}>`;
+        return `<${tag}${wrapperStyleAttr}>\n${indentedCode}\n</${tag}>`;
       }
-      return comp.code;
+      return `<div${wrapperStyleAttr}>\n${indentedCode}\n</div>`;
     }).join('\n\n');
 
     const containerTag = useSemanticHTML ? 'main' : 'div';
 
-    return `<${containerTag} className="min-h-screen bg-gray-50 py-8">
-  <div className="w-full px-4 space-y-6">
+    return `<${containerTag} className="min-h-screen bg-gray-50 dark:bg-slate-800">
+  <div className="w-full space-y-0">
 ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
   </div>
 </${containerTag}>`;
@@ -260,9 +388,9 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
       </div>
 
       {/* Center - Canvas Area */}
-      <div className="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden max-w-full">
-        <div className="w-full max-w-full">
-          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-md p-4 sm:p-6 mb-6 max-w-full overflow-hidden">
+      <div className="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-auto">
+        <div className="w-full min-w-[1024px]">
+          <div className="bg-white dark:bg-slate-900 rounded-xl shadow-md p-4 sm:p-6 mb-6 w-full">
             <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
               <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 break-words">
@@ -352,35 +480,39 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                 </p>
               </div>
             ) : (
-              <DndContext
-                sensors={sensors}
-                collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
-              >
-                <SortableContext
-                  items={pageComponents.map((c) => c.id)}
-                  strategy={verticalListSortingStrategy}
+              <div className="w-full">
+                <DndContext
+                  sensors={sensors}
+                  collisionDetection={closestCenter}
+                  onDragEnd={handleDragEnd}
                 >
-                  {pageComponents.map((component) => (
-                    <SortableItem
-                      key={component.id}
-                      id={component.id}
-                      component={component}
-                      onRemove={removeComponent}
-                      onSelect={setSelectedComponentId}
-                      isSelected={selectedComponentId === component.id}
-                    />
-                  ))}
-                </SortableContext>
-              </DndContext>
+                  <SortableContext
+                    items={pageComponents.map((c) => c.id)}
+                    strategy={verticalListSortingStrategy}
+                  >
+                    <div className="space-y-3 w-full">
+                      {pageComponents.map((component) => (
+                        <SortableItem
+                          key={component.id}
+                          id={component.id}
+                          component={component}
+                          onRemove={removeComponent}
+                          onSelect={setSelectedComponentId}
+                          isSelected={selectedComponentId === component.id}
+                        />
+                      ))}
+                    </div>
+                  </SortableContext>
+                </DndContext>
+              </div>
             )}
           </div>
 
           {/* Code Preview */}
           {showCode && (
-            <div className="bg-white dark:bg-slate-900 rounded-xl shadow-md p-4 sm:p-6 max-w-full overflow-hidden">
+            <div className="bg-white dark:bg-slate-900 rounded-xl shadow-md p-4 sm:p-6 w-full">
               <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Generated Code</h2>
-              <div className="bg-gray-900 dark:bg-slate-950 rounded-lg p-4 overflow-x-auto max-w-full">
+              <div className="bg-gray-900 dark:bg-slate-950 rounded-lg p-4 overflow-x-auto w-full">
                 <pre className="text-xs sm:text-sm text-gray-100 whitespace-pre-wrap break-words">
                   <code>{generateFullPageCode()}</code>
                 </pre>
@@ -390,31 +522,74 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
 
           {/* Preview Modal */}
           {showPreview && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
+              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl w-full max-w-[98vw] h-[96vh] flex flex-col overflow-hidden">
                 {/* Preview Header */}
-                <div className="flex justify-between items-center p-4 border-b bg-gray-50 dark:bg-slate-800 dark:border-slate-700">
-                  <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Live Preview</h2>
+                <div className="flex justify-between items-center p-3 sm:p-4 border-b bg-gray-50 dark:bg-slate-800 dark:border-slate-700 flex-shrink-0">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100">Live Preview</h2>
+                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-slate-700 px-2 sm:px-3 py-1 rounded-full">Desktop View</span>
+                  </div>
                   <button
                     onClick={() => setShowPreview(false)}
                     className="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </div>
 
                 {/* Preview Content */}
-                <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-slate-800 p-8">
-                  <div className="min-h-screen bg-gray-50 dark:bg-slate-800 py-8">
-                    <div className="w-full px-4 space-y-6">
-                      {pageComponents.map((component) => (
-                        <div key={component.id}>
-                          {component.element}
-                        </div>
-                      ))}
-                    </div>
+                <div className="flex-1 overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-900">
+                  <div className="w-full space-y-0 p-4">
+                    {pageComponents.map((component) => (
+                      <div
+                        key={component.id}
+                        className="relative"
+                        style={{
+                          // Layout properties on wrapper
+                          width: component.customProps.width || '100%',
+                          display: component.customProps.display || 'block',
+                          marginInline: component.customProps.alignment === 'center' ? 'auto' :
+                                       component.customProps.alignment === 'right' ? '0 0 0 auto' :
+                                       component.customProps.alignment === 'left' ? '0 auto 0 0' : 'initial',
+                          // Margins on wrapper - creates space BETWEEN components (visible!)
+                          marginTop: component.customProps.marginTop || '0',
+                          marginRight: component.customProps.marginRight || '0',
+                          marginBottom: component.customProps.marginBottom || '0',
+                          marginLeft: component.customProps.marginLeft || '0',
+                          // Visual indicator
+                          outline: '1px dashed rgba(59, 130, 246, 0.5)',
+                          outlineOffset: '2px',
+                        }}
+                      >
+                        {React.isValidElement(component.element) ? (() => {
+                            const elem = component.element as React.ReactElement<any>;
+                            const existingStyle = typeof elem.props?.style === 'object' ? elem.props.style : {};
+
+                            return React.cloneElement(elem, {
+                              style: {
+                                ...existingStyle,
+                                // Colors
+                                backgroundColor: component.customProps.bgColor || existingStyle?.backgroundColor,
+                                color: component.customProps.textColor || existingStyle?.color,
+                                borderColor: component.customProps.borderColor || existingStyle?.borderColor,
+                                // Dimensions on component
+                                width: '100%',
+                                height: component.customProps.height || existingStyle?.height,
+                                maxWidth: component.customProps.maxWidth && component.customProps.maxWidth !== 'none' ? component.customProps.maxWidth : existingStyle?.maxWidth,
+                                minHeight: component.customProps.minHeight && component.customProps.minHeight !== 'auto' ? component.customProps.minHeight : existingStyle?.minHeight,
+                                // Padding on component - creates space INSIDE component (visible!)
+                                paddingTop: component.customProps.paddingTop && component.customProps.paddingTop !== '0' ? component.customProps.paddingTop : existingStyle?.paddingTop,
+                                paddingRight: component.customProps.paddingRight && component.customProps.paddingRight !== '0' ? component.customProps.paddingRight : existingStyle?.paddingRight,
+                                paddingBottom: component.customProps.paddingBottom && component.customProps.paddingBottom !== '0' ? component.customProps.paddingBottom : existingStyle?.paddingBottom,
+                                paddingLeft: component.customProps.paddingLeft && component.customProps.paddingLeft !== '0' ? component.customProps.paddingLeft : existingStyle?.paddingLeft,
+                              }
+                            });
+                          })() : component.element}
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -541,6 +716,219 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                 />
               </div>
 
+              {/* Dimensions Section */}
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
+                  <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                  Dimensions
+                </label>
+                <div className="space-y-3">
+                  {/* Width */}
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Width</label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={selectedComponent.customProps.width || '100%'}
+                        onChange={(e) => updateComponentProps(selectedComponent.id, { width: e.target.value })}
+                        className="flex-1 px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                        placeholder="e.g., 100%, 500px, 50vw"
+                      />
+                      <select
+                        onChange={(e) => updateComponentProps(selectedComponent.id, { width: e.target.value })}
+                        className="px-2 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg text-xs bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      >
+                        <option value="">Quick</option>
+                        <option value="100%">Full</option>
+                        <option value="75%">3/4</option>
+                        <option value="50%">1/2</option>
+                        <option value="33.333%">1/3</option>
+                        <option value="25%">1/4</option>
+                      </select>
+                    </div>
+                  </div>
+                  {/* Height */}
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Height</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.height || 'auto'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { height: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="e.g., auto, 300px, 50vh"
+                    />
+                  </div>
+                  {/* Max Width */}
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Max Width</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.maxWidth || 'none'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { maxWidth: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="e.g., none, 1200px"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Alignment */}
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
+                  <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                  Alignment
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  <button
+                    onClick={() => updateComponentProps(selectedComponent.id, { alignment: 'left' })}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                      selectedComponent.customProps.alignment === 'left'
+                        ? 'bg-cyan-500 text-white'
+                        : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                    }`}
+                  >
+                    Left
+                  </button>
+                  <button
+                    onClick={() => updateComponentProps(selectedComponent.id, { alignment: 'center' })}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                      selectedComponent.customProps.alignment === 'center'
+                        ? 'bg-cyan-500 text-white'
+                        : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                    }`}
+                  >
+                    Center
+                  </button>
+                  <button
+                    onClick={() => updateComponentProps(selectedComponent.id, { alignment: 'right' })}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                      selectedComponent.customProps.alignment === 'right'
+                        ? 'bg-cyan-500 text-white'
+                        : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                    }`}
+                  >
+                    Right
+                  </button>
+                </div>
+              </div>
+
+              {/* Margin Section */}
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  Margin (Outer Spacing)
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Top</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.marginTop || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { marginTop: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Bottom</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.marginBottom || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { marginBottom: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Left</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.marginLeft || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { marginLeft: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Right</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.marginRight || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { marginRight: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Padding Section */}
+              <div className="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-200 dark:border-slate-700">
+                <label className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  Padding (Inner Spacing)
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Top</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.paddingTop || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { paddingTop: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Bottom</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.paddingBottom || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { paddingBottom: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Left</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.paddingLeft || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { paddingLeft: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">Right</label>
+                    <input
+                      type="text"
+                      value={selectedComponent.customProps.paddingRight || '0'}
+                      onChange={(e) => updateComponentProps(selectedComponent.id, { paddingRight: e.target.value })}
+                      className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none text-sm bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
+                      placeholder="0px"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Apply Changes Button */}
+              <button
+                onClick={() => {
+                  // Force re-render to show all spacing changes
+                  setPageComponents([...pageComponents]);
+                  // Auto-open preview to show perfect result
+                  setShowPreview(true);
+                }}
+                className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                Apply Changes & Preview
+              </button>
+
               {/* Info Note */}
               <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
                 <div className="flex gap-3">
@@ -548,7 +936,7 @@ ${componentCodes.split('\n').map(line => '    ' + line).join('\n')}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <p className="text-xs text-blue-800 dark:text-blue-300 leading-relaxed">
-                    Your customizations will be reflected in the exported code. Changes are saved automatically.
+                    Click "Apply Changes & Preview" to see margins and padding in full desktop view. All customizations are included in exported code.
                   </p>
                 </div>
               </div>
