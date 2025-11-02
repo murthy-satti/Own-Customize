@@ -441,6 +441,46 @@ export const BorderSlideButton: React.FC<{ children: React.ReactNode }> = ({ chi
   </button>
 );
 
+// Button Type 36: StylishButton
+export const GreenStyle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <button
+    className="relative px-6 py-3 text-green-700 dark:text-green-800 font-semibold rounded-lg overflow-hidden
+  border border-green-300 bg-green-100"
+  >
+    <span className="relative z-10">{children}</span>
+  </button>
+);
+
+// Button Type 36: StylishButton
+export const RedStyle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <button
+    className="relative px-6 py-3 text-red-700 dark:text-red-800 font-semibold rounded-lg overflow-hidden
+  border border-red-300 bg-red-100"
+  >
+    <span className="relative z-10">{children}</span>
+  </button>
+);
+
+// Button Type 36: StylishButton
+export const BlueStyle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <button
+    className="relative px-6 py-3 text-blue-700 dark:text-blue-800 font-semibold rounded-lg overflow-hidden
+  border border-blue-300 bg-blue-100"
+  >
+    <span className="relative z-10">{children}</span>
+  </button>
+);
+
+// Button Type 36: StylishButton
+export const YellowStyle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <button
+    className="relative px-6 py-3 text-yellow-700 dark:text-yellow-800 font-semibold rounded-lg overflow-hidden
+  border border-yellow-300 bg-yellow-100"
+  >
+    <span className="relative z-10">{children}</span>
+  </button>
+);
+
 
 
 
@@ -448,6 +488,50 @@ export const BorderSlideButton: React.FC<{ children: React.ReactNode }> = ({ chi
 
 
 export const buttonComponents = [
+  {
+    name: 'RedStyle',
+    component: RedStyle,
+    code: `<button
+  className="relative px-6 py-3 text-green-700 dark:text-white font-semibold rounded-lg overflow-hidden
+  border border-green-300 bg-green-100"
+>
+  Primary Button
+</button>`,
+    preview: <RedStyle>Red Stylish </RedStyle>,
+  },
+   {
+    name: 'GreenStyle',
+    component: GreenStyle,
+    code: `<button
+  className="relative px-6 py-3 text-green-700 dark:text-white font-semibold rounded-lg overflow-hidden
+  border border-green-300 bg-green-100"
+>
+  Primary Button
+</button>`,
+    preview: <GreenStyle>Green Stylish </GreenStyle>,
+  },
+   {
+    name: 'BlueStyle',
+    component: BlueStyle,
+    code: `<button
+  className="relative px-6 py-3 text-blue-700 dark:text-white font-semibold rounded-lg overflow-hidden
+  border border-blue-300 bg-blue-100"
+>
+  Primary Button
+</button>`,
+    preview: <BlueStyle>Blue Stylish </BlueStyle>,
+  },
+   {
+    name: 'YellowStyle',
+    component: YellowStyle,
+    code: `<button
+  className="relative px-6 py-3 text-yellow-700 dark:text-white font-semibold rounded-lg overflow-hidden
+  border border-yellow-300 bg-yellow-100"
+>
+  Primary Button
+</button>`,
+    preview: <YellowStyle>Yellow Stylish </YellowStyle>,
+  },
   {
     name: 'PrimaryButton',
     component: PrimaryButton,

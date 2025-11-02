@@ -10,7 +10,7 @@ function AppContent() {
   const showFooter = location.pathname === '/';
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-800 flex flex-col overflow-x-hidden max-w-full">
+    <div className="min-h-screen bg-white dark:bg-slate-800 flex flex-col overflow-x-hidden max-w-full">
       <Navbar />
       <div className="pt-16">
         <Routes>
