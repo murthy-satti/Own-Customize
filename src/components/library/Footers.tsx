@@ -796,6 +796,1328 @@ export const BackToTopFooter: React.FC = () => {
   );
 };
 
+
+
+// GradientFooter
+export const GradientFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// GlassFooter
+export const GlassFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl border-t border-white/20 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-900 dark:text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// NeonFooter
+export const NeonFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-950 dark:bg-black border-t border-cyan-500/30 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-cyan-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// MinimalFooter2
+export const MinimalFooter2: React.FC = () => {
+  return (
+    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ColorfulFooter
+export const ColorfulFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-blue-600 dark:bg-blue-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-blue-100 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ModernFooter
+export const ModernFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-900 dark:bg-gray-950 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ProfessionalFooter
+export const ProfessionalFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// CreativeFooter
+export const CreativeFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ElegantFooter
+export const ElegantFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl border-t border-white/20 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-900 dark:text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// BoldFooter
+export const BoldFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-950 dark:bg-black border-t border-cyan-500/30 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-cyan-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ThreeColumnFooter
+export const ThreeColumnFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-900 dark:bg-gray-950 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// FiveColumnFooter
+export const FiveColumnFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// CenteredFooter
+export const CenteredFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// SplitFooter
+export const SplitFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl border-t border-white/20 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-900 dark:text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// AppDownloadFooter
+export const AppDownloadFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-blue-600 dark:bg-blue-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-blue-100 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ContactFooter
+export const ContactFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-900 dark:bg-gray-950 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Simple Four Column Footer
+export const SimpleColumnFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Gradient Columns Footer
+export const GradientColumnsFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// WaveFooter
+export const WaveFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl border-t border-white/20 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-900 dark:text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// OverlapFooter
+export const OverlapFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-950 dark:bg-black border-t border-cyan-500/30 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-cyan-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// StickyFooter
+export const StickyFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-900 dark:bg-gray-950 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// CompactFooter
+export const CompactFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// TwoToneFooter
+export const TwoToneFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ModernFooter2
+export const ModernFooter2: React.FC = () => {
+  return (
+    <footer className="w-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl border-t border-white/20 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-900 dark:text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// RetroFooter
+export const RetroFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-blue-600 dark:bg-blue-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-blue-100 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-blue-100 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// MaterialFooter
+export const MaterialFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-900 dark:bg-gray-950 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// CardFooter
+export const CardFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// AnimatedFooter
+export const AnimatedFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 dark:from-purple-900 dark:via-pink-900 dark:to-red-900 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-white/90 hover:text-white transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 pt-8 text-center">
+          <p className="text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ImageBgFooter
+export const ImageBgFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-white/10 dark:bg-gray-900/10 backdrop-blur-xl border-t border-white/20 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-gray-900 dark:text-white text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// CTAFooter
+export const CTAFooter: React.FC = () => {
+  return (
+    <footer className="w-full bg-gray-950 dark:bg-black border-t border-cyan-500/30 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">About</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Careers</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Products</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Features</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Docs</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-bold drop-shadow-[0_0_10px_rgba(34,211,238,0.7)] text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Privacy</a></li>
+              <li><a href="#" className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-colors text-sm">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-8 text-center">
+          <p className="text-cyan-400 text-sm">&copy; 2024 Company. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
 export const footerComponents = [
   {
     name: 'SimpleFooter',
@@ -1068,5 +2390,245 @@ export const footerComponents = [
   {/* BackToTopFooter */}
 </div>`,
     preview: <BackToTopFooter />,
+  },
+  {
+    name: 'GradientFooter',
+    component: GradientFooter,
+    code: `<div className="component">
+  {/* GradientFooter */}
+</div>`,
+    preview: <GradientFooter />,
+  },
+  {
+    name: 'GlassFooter',
+    component: GlassFooter,
+    code: `<div className="component">
+  {/* GlassFooter */}
+</div>`,
+    preview: <GlassFooter />,
+  },
+  {
+    name: 'NeonFooter',
+    component: NeonFooter,
+    code: `<div className="component">
+  {/* NeonFooter */}
+</div>`,
+    preview: <NeonFooter />,
+  },
+  {
+    name: 'MinimalFooter2',
+    component: MinimalFooter2,
+    code: `<div className="component">
+  {/* MinimalFooter2 */}
+</div>`,
+    preview: <MinimalFooter2 />,
+  },
+  {
+    name: 'ColorfulFooter',
+    component: ColorfulFooter,
+    code: `<div className="component">
+  {/* ColorfulFooter */}
+</div>`,
+    preview: <ColorfulFooter />,
+  },
+  {
+    name: 'ModernFooter',
+    component: ModernFooter,
+    code: `<div className="component">
+  {/* ModernFooter */}
+</div>`,
+    preview: <ModernFooter />,
+  },
+  {
+    name: 'ProfessionalFooter',
+    component: ProfessionalFooter,
+    code: `<div className="component">
+  {/* ProfessionalFooter */}
+</div>`,
+    preview: <ProfessionalFooter />,
+  },
+  {
+    name: 'CreativeFooter',
+    component: CreativeFooter,
+    code: `<div className="component">
+  {/* CreativeFooter */}
+</div>`,
+    preview: <CreativeFooter />,
+  },
+  {
+    name: 'ElegantFooter',
+    component: ElegantFooter,
+    code: `<div className="component">
+  {/* ElegantFooter */}
+</div>`,
+    preview: <ElegantFooter />,
+  },
+  {
+    name: 'BoldFooter',
+    component: BoldFooter,
+    code: `<div className="component">
+  {/* BoldFooter */}
+</div>`,
+    preview: <BoldFooter />,
+  },
+  {
+    name: 'ThreeColumnFooter',
+    component: ThreeColumnFooter,
+    code: `<div className="component">
+  {/* ThreeColumnFooter */}
+</div>`,
+    preview: <ThreeColumnFooter />,
+  },
+  {
+    name: 'FiveColumnFooter',
+    component: FiveColumnFooter,
+    code: `<div className="component">
+  {/* FiveColumnFooter */}
+</div>`,
+    preview: <FiveColumnFooter />,
+  },
+  {
+    name: 'CenteredFooter',
+    component: CenteredFooter,
+    code: `<div className="component">
+  {/* CenteredFooter */}
+</div>`,
+    preview: <CenteredFooter />,
+  },
+  {
+    name: 'SplitFooter',
+    component: SplitFooter,
+    code: `<div className="component">
+  {/* SplitFooter */}
+</div>`,
+    preview: <SplitFooter />,
+  },
+  {
+    name: 'AppDownloadFooter',
+    component: AppDownloadFooter,
+    code: `<div className="component">
+  {/* AppDownloadFooter */}
+</div>`,
+    preview: <AppDownloadFooter />,
+  },
+  {
+    name: 'ContactFooter',
+    component: ContactFooter,
+    code: `<div className="component">
+  {/* ContactFooter */}
+</div>`,
+    preview: <ContactFooter />,
+  },
+  {
+    name: 'SimpleColumnFooter',
+    component: SimpleColumnFooter,
+    code: `<div className="component">
+  {/* SimpleColumnFooter */}
+</div>`,
+    preview: <SimpleColumnFooter />,
+  },
+  {
+    name: 'GradientColumnsFooter',
+    component: GradientColumnsFooter,
+    code: `<div className="component">
+  {/* GradientColumnsFooter */}
+</div>`,
+    preview: <GradientColumnsFooter />,
+  },
+  {
+    name: 'WaveFooter',
+    component: WaveFooter,
+    code: `<div className="component">
+  {/* WaveFooter */}
+</div>`,
+    preview: <WaveFooter />,
+  },
+  {
+    name: 'OverlapFooter',
+    component: OverlapFooter,
+    code: `<div className="component">
+  {/* OverlapFooter */}
+</div>`,
+    preview: <OverlapFooter />,
+  },
+  {
+    name: 'StickyFooter',
+    component: StickyFooter,
+    code: `<div className="component">
+  {/* StickyFooter */}
+</div>`,
+    preview: <StickyFooter />,
+  },
+  {
+    name: 'CompactFooter',
+    component: CompactFooter,
+    code: `<div className="component">
+  {/* CompactFooter */}
+</div>`,
+    preview: <CompactFooter />,
+  },
+  {
+    name: 'TwoToneFooter',
+    component: TwoToneFooter,
+    code: `<div className="component">
+  {/* TwoToneFooter */}
+</div>`,
+    preview: <TwoToneFooter />,
+  },
+  {
+    name: 'ModernFooter2',
+    component: ModernFooter2,
+    code: `<div className="component">
+  {/* ModernFooter2 */}
+</div>`,
+    preview: <ModernFooter2 />,
+  },
+  {
+    name: 'RetroFooter',
+    component: RetroFooter,
+    code: `<div className="component">
+  {/* RetroFooter */}
+</div>`,
+    preview: <RetroFooter />,
+  },
+  {
+    name: 'MaterialFooter',
+    component: MaterialFooter,
+    code: `<div className="component">
+  {/* MaterialFooter */}
+</div>`,
+    preview: <MaterialFooter />,
+  },
+  {
+    name: 'CardFooter',
+    component: CardFooter,
+    code: `<div className="component">
+  {/* CardFooter */}
+</div>`,
+    preview: <CardFooter />,
+  },
+  {
+    name: 'AnimatedFooter',
+    component: AnimatedFooter,
+    code: `<div className="component">
+  {/* AnimatedFooter */}
+</div>`,
+    preview: <AnimatedFooter />,
+  },
+  {
+    name: 'ImageBgFooter',
+    component: ImageBgFooter,
+    code: `<div className="component">
+  {/* ImageBgFooter */}
+</div>`,
+    preview: <ImageBgFooter />,
+  },
+  {
+    name: 'CTAFooter',
+    component: CTAFooter,
+    code: `<div className="component">
+  {/* CTAFooter */}
+</div>`,
+    preview: <CTAFooter />,
   },
 ];
