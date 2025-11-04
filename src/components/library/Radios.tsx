@@ -578,56 +578,138 @@ export const radioComponents = [
   {
     name: 'RadioInput',
     component: RadioInput,
-    code: `<div className="component">
-  {/* RadioInput */}
+    code: `<div className="space-y-2">
+<label className="block text-sm font-medium text-gray-700 mb-2">Select an option</label>
+<div className="flex items-center">
+<input type="radio" name="radio" className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" defaultChecked />
+<label className="ml-2 text-sm text-gray-700 cursor-pointer">Option 1</label>
+</div>
+<div className="flex items-center">
+<input type="radio" name="radio" className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" />
+<label className="ml-2 text-sm text-gray-700 cursor-pointer">Option 2</label>
+</div>
 </div>`,
     preview: <RadioInput />,
   },
   {
     name: 'RadioGroupHorizontal',
     component: RadioGroupHorizontal,
-    code: `<div className="component">
-  {/* RadioGroupHorizontal */}
+    code: `<div>
+<label className="block text-sm font-medium text-gray-700 mb-3">Choose a plan</label>
+<div className="flex gap-6">
+<div className="flex items-center">
+<input type="radio" name="plan" className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" defaultChecked />
+<label className="ml-2 text-sm text-gray-700 cursor-pointer">Basic</label>
+</div>
+<div className="flex items-center">
+<input type="radio" name="plan" className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" />
+<label className="ml-2 text-sm text-gray-700 cursor-pointer">Pro</label>
+</div>
+<div className="flex items-center">
+<input type="radio" name="plan" className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" />
+<label className="ml-2 text-sm text-gray-700 cursor-pointer">Enterprise</label>
+</div>
+</div>
 </div>`,
     preview: <RadioGroupHorizontal />,
   },
   {
     name: 'RadioCards',
     component: RadioCards,
-    code: `<div className="component">
-  {/* RadioCards */}
+    code: `<div className="space-y-3">
+<label className="block text-sm font-medium text-gray-700 mb-2">Select size</label>
+<label className="flex items-center p-4 border-2 border-blue-600 bg-blue-50 rounded-lg cursor-pointer">
+<input type="radio" name="size" className="w-4 h-4 text-blue-600 cursor-pointer" defaultChecked />
+<div className="ml-3">
+<div className="text-sm font-medium text-gray-900">Small</div>
+<div className="text-xs text-gray-500">Perfect for personal use</div>
+</div>
+</label>
+<label className="flex items-center p-4 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-400">
+<input type="radio" name="size" className="w-4 h-4 text-blue-600 cursor-pointer" />
+<div className="ml-3">
+<div className="text-sm font-medium text-gray-900">Medium</div>
+<div className="text-xs text-gray-500">Great for small teams</div>
+</div>
+</label>
 </div>`,
     preview: <RadioCards />,
   },
   {
     name: 'RadioWithDescription',
     component: RadioWithDescription,
-    code: `<div className="component">
-  {/* RadioWithDescription */}
+    code: `<div className="space-y-3">
+<label className="block text-sm font-medium text-gray-700 mb-2">Delivery method</label>
+<div className="flex items-start">
+<input type="radio" name="delivery" className="w-4 h-4 mt-1 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" defaultChecked />
+<div className="ml-3">
+<label className="text-sm font-medium text-gray-900 cursor-pointer">Standard Shipping</label>
+<p className="text-xs text-gray-500">Delivery in 5-7 business days</p>
+</div>
+</div>
+<div className="flex items-start">
+<input type="radio" name="delivery" className="w-4 h-4 mt-1 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer" />
+<div className="ml-3">
+<label className="text-sm font-medium text-gray-900 cursor-pointer">Express Shipping</label>
+<p className="text-xs text-gray-500">Delivery in 2-3 business days</p>
+</div>
+</div>
 </div>`,
     preview: <RadioWithDescription />,
   },
   {
     name: 'RadioGrid',
     component: RadioGrid,
-    code: `<div className="component">
-  {/* RadioGrid */}
+    code: `<div>
+<label className="block text-sm font-medium text-gray-700 mb-3">Select color</label>
+<div className="grid grid-cols-2 gap-3">
+<label className="flex items-center p-3 border-2 border-blue-600 bg-blue-50 rounded-lg cursor-pointer">
+<input type="radio" name="color" className="w-4 h-4 text-blue-600 cursor-pointer" defaultChecked />
+<span className="ml-2 text-sm font-medium text-gray-900">Blue</span>
+</label>
+<label className="flex items-center p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-400">
+<input type="radio" name="color" className="w-4 h-4 text-blue-600 cursor-pointer" />
+<span className="ml-2 text-sm font-medium text-gray-900">Red</span>
+</label>
+<label className="flex items-center p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-400">
+<input type="radio" name="color" className="w-4 h-4 text-blue-600 cursor-pointer" />
+<span className="ml-2 text-sm font-medium text-gray-900">Green</span>
+</label>
+<label className="flex items-center p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:border-blue-400">
+<input type="radio" name="color" className="w-4 h-4 text-blue-600 cursor-pointer" />
+<span className="ml-2 text-sm font-medium text-gray-900">Yellow</span>
+</label>
+</div>
 </div>`,
     preview: <RadioGrid />,
   },
   {
     name: 'ModernRadio',
     component: ModernRadio,
-    code: `<div className="component">
-  {/* ModernRadio */}
+    code: `<div className="space-y-3">
+<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Modern</label>
+<div className="flex items-center space-x-3">
+<input type="radio" name="ModernRadio" className="w-4 h-4 text-blue-600 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 cursor-pointer" defaultChecked />
+<label className="text-sm text-gray-700 dark:text-gray-300">Option 1</label>
+</div>
+<div className="flex items-center space-x-3">
+<input type="radio" name="ModernRadio" className="w-4 h-4 text-blue-600 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 cursor-pointer" />
+<label className="text-sm text-gray-700 dark:text-gray-300">Option 2</label>
+</div>
 </div>`,
     preview: <ModernRadio />,
   },
   {
     name: 'CardRadio',
     component: CardRadio,
-    code: `<div className="component">
-  {/* CardRadio */}
+    code: `<div className="grid grid-cols-3 gap-4">
+{['Basic', 'Pro', 'Enterprise'].map((plan, i) => (
+<label key={i} className="relative block p-6 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer hover:border-blue-500 has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50 dark:has-[:checked]:bg-blue-900/20">
+<input type="radio" name="planCard" className="absolute top-4 right-4 w-5 h-5 text-blue-600" defaultChecked={i === 1} />
+<h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">{plan}</h3>
+<p className="text-gray-600 dark:text-gray-400 text-sm">$9/mo</p>
+</label>
+))}
 </div>`,
     preview: <CardRadio />,
   },
@@ -642,32 +724,60 @@ export const radioComponents = [
   {
     name: 'PillRadio',
     component: PillRadio,
-    code: `<div className="component">
-  {/* PillRadio */}
+    code: `<div className="flex flex-wrap gap-2">
+{['React', 'Vue', 'Angular', 'Svelte'].map((tech, i) => (
+<label key={i} className="cursor-pointer">
+<input type="radio" name="pillRadio" className="sr-only peer" defaultChecked={i === 0} />
+<div className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition-all font-medium text-sm">
+{tech}
+</div>
+</label>
+))}
 </div>`,
     preview: <PillRadio />,
   },
   {
     name: 'ImageRadio',
     component: ImageRadio,
-    code: `<div className="component">
-  {/* ImageRadio */}
+    code: `<div className="grid grid-cols-2 gap-4">
+{['Light', 'Dark'].map((theme, i) => (
+<label key={i} className="relative block cursor-pointer">
+<input type="radio" name="imageRadio" className="sr-only peer" defaultChecked={i === 0} />
+<div className={'h-32 rounded-xl peer-checked:ring-4 peer-checked:ring-blue-500 transition-all ' + (i === 0 ? 'bg-gradient-to-br from-blue-100 to-purple-100' : 'bg-gradient-to-br from-gray-800 to-gray-900')}>
+<div className="flex items-center justify-center h-full">
+<span className={'text-xl font-bold ' + (i === 0 ? 'text-gray-900' : 'text-white')}>{theme}</span>
+</div>
+</div>
+</label>
+))}
 </div>`,
     preview: <ImageRadio />,
   },
   {
     name: 'MinimalRadio',
     component: MinimalRadio,
-    code: `<div className="component">
-  {/* MinimalRadio */}
+    code: `<div className="space-y-2">
+{['Small', 'Medium', 'Large'].map((size, i) => (
+<label key={i} className="flex items-center gap-3 cursor-pointer">
+<input type="radio" name="minimalRadio" className="w-4 h-4 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 focus:ring-0" defaultChecked={i === 1} />
+<span className="text-gray-700 dark:text-gray-300">{size}</span>
+</label>
+))}
 </div>`,
     preview: <MinimalRadio />,
   },
   {
     name: 'ToggleRadio',
     component: ToggleRadio,
-    code: `<div className="component">
-  {/* ToggleRadio */}
+    code: `<div className="flex gap-0 border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+{['Day', 'Week', 'Month', 'Year'].map((period, i) => (
+<label key={i} className="flex-1 relative">
+<input type="radio" name="toggleRadio" className="sr-only peer" defaultChecked={i === 2} />
+<div className="px-4 py-3 text-center text-sm font-medium text-gray-600 dark:text-gray-400 cursor-pointer peer-checked:bg-blue-600 peer-checked:text-white transition-all border-r border-gray-300 dark:border-gray-600 last:border-r-0">
+{period}
+</div>
+</label>
+))}
 </div>`,
     preview: <ToggleRadio />,
   },
@@ -690,64 +800,119 @@ export const radioComponents = [
   {
     name: 'BadgeRadio',
     component: BadgeRadio,
-    code: `<div className="component">
-  {/* BadgeRadio */}
+    code: `<div className="flex flex-wrap gap-2">
+{['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((size, i) => (
+<label key={i} className="cursor-pointer">
+<input type="radio" name="badgeRadio" className="sr-only peer" defaultChecked={i === 2} />
+<div className="w-12 h-12 flex items-center justify-center border-2 border-gray-300 dark:border-gray-600 rounded-lg peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white text-gray-700 dark:text-gray-300 font-medium transition-all">
+{size}
+</div>
+</label>
+))}
 </div>`,
     preview: <BadgeRadio />,
   },
   {
     name: 'GradientRadio',
     component: GradientRadio,
-    code: `<div className="component">
-  {/* GradientRadio */}
+    code: `<div className="space-y-3">
+{['Option A', 'Option B', 'Option C'].map((opt, i) => (
+<label key={i} className="flex items-center gap-3 cursor-pointer">
+<input type="radio" name="gradientRadio" className="w-5 h-5 text-transparent bg-gradient-to-r from-purple-500 to-pink-500 border-0 checked:bg-gradient-to-r checked:from-purple-600 checked:to-pink-600" defaultChecked={i === 0} />
+<span className="text-gray-700 dark:text-gray-300">{opt}</span>
+</label>
+))}
 </div>`,
     preview: <GradientRadio />,
   },
   {
     name: 'NeonRadio',
     component: NeonRadio,
-    code: `<div className="component">
-  {/* NeonRadio */}
+    code: `<div className="space-y-3 bg-black p-6 rounded-xl">
+{['Neon Blue', 'Neon Pink', 'Neon Green'].map((opt, i) => (
+<label key={i} className="flex items-center gap-3 cursor-pointer">
+<input type="radio" name="neonRadio" className="w-5 h-5 text-cyan-400 bg-gray-900 border-2 border-cyan-400 checked:shadow-[0_0_10px_rgba(34,211,238,0.8)]" defaultChecked={i === 0} />
+<span className="text-cyan-400">{opt}</span>
+</label>
+))}
 </div>`,
     preview: <NeonRadio />,
   },
   {
     name: 'SegmentedRadio',
     component: SegmentedRadio,
-    code: `<div className="component">
-  {/* SegmentedRadio */}
+    code: `<div className="inline-flex border-2 border-gray-200 dark:border-gray-700 rounded-xl p-1">
+{['Personal', 'Business', 'Enterprise'].map((type, i) => (
+<label key={i} className="relative">
+<input type="radio" name="segmentedRadio" className="sr-only peer" defaultChecked={i === 0} />
+<div className="px-6 py-2 text-sm font-medium cursor-pointer peer-checked:bg-blue-600 peer-checked:text-white rounded-lg transition-all text-gray-700 dark:text-gray-300">
+{type}
+</div>
+</label>
+))}
 </div>`,
     preview: <SegmentedRadio />,
   },
   {
     name: 'BoxRadio',
     component: BoxRadio,
-    code: `<div className="component">
-  {/* BoxRadio */}
+    code: `<div className="grid grid-cols-2 gap-4">
+{[1, 2, 3, 4].map(num => (
+<label key={num} className="relative block p-8 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-2xl cursor-pointer hover:border-blue-500 has-[:checked]:border-blue-600 has-[:checked]:shadow-xl">
+<input type="radio" name="boxRadio" className="absolute top-4 right-4 w-6 h-6 text-blue-600" defaultChecked={num === 1} />
+<div className="text-center">
+<div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{num}</div>
+<p className="text-sm text-gray-600 dark:text-gray-400">Option {num}</p>
+</div>
+</label>
+))}
 </div>`,
     preview: <BoxRadio />,
   },
   {
     name: 'TabRadio',
     component: TabRadio,
-    code: `<div className="component">
-  {/* TabRadio */}
+    code: `<div className="border-b-2 border-gray-200 dark:border-gray-700">
+<div className="flex gap-8">
+{['Profile', 'Settings', 'Notifications'].map((tab, i) => (
+<label key={i} className="relative cursor-pointer">
+<input type="radio" name="tabRadio" className="sr-only peer" defaultChecked={i === 0} />
+<div className="pb-4 text-gray-600 dark:text-gray-400 peer-checked:text-blue-600 peer-checked:border-b-2 peer-checked:border-blue-600 font-medium transition-all">
+{tab}
+</div>
+</label>
+))}
+</div>
 </div>`,
     preview: <TabRadio />,
   },
   {
     name: 'CompactRadio',
     component: CompactRadio,
-    code: `<div className="component">
-  {/* CompactRadio */}
+    code: `<div className="inline-flex gap-1">
+{['1x', '2x', '4x', '8x'].map((multiplier, i) => (
+<label key={i} className="cursor-pointer">
+<input type="radio" name="compactRadio" className="sr-only peer" defaultChecked={i === 0} />
+<div className="px-3 py-1 text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 peer-checked:bg-green-600 peer-checked:text-white rounded transition-all">
+{multiplier}
+</div>
+</label>
+))}
 </div>`,
     preview: <CompactRadio />,
   },
   {
     name: 'StarRatingRadio',
     component: StarRatingRadio,
-    code: `<div className="component">
-  {/* StarRatingRadio */}
+    code: `<div className="flex gap-2">
+{[1, 2, 3, 4, 5].map(star => (
+<label key={star} className="cursor-pointer">
+<input type="radio" name="starRadio" className="sr-only peer" defaultChecked={star === 4} />
+<svg className="w-10 h-10 text-gray-300 peer-checked:text-yellow-400 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+</svg>
+</label>
+))}
 </div>`,
     preview: <StarRatingRadio />,
   },
@@ -762,32 +927,56 @@ export const radioComponents = [
   {
     name: 'ThumbsRadio',
     component: ThumbsRadio,
-    code: `<div className="component">
-  {/* ThumbsRadio */}
+    code: `<div className="flex gap-4">
+{['👍', '👎'].map((thumb, i) => (
+<label key={i} className="cursor-pointer">
+<input type="radio" name="thumbsRadio" className="sr-only peer" defaultChecked={i === 0} />
+<div className="text-6xl opacity-30 peer-checked:opacity-100 peer-checked:scale-110 transition-all">
+{thumb}
+</div>
+</label>
+))}
 </div>`,
     preview: <ThumbsRadio />,
   },
   {
     name: 'DotRadio',
     component: DotRadio,
-    code: `<div className="component">
-  {/* DotRadio */}
+    code: `<div className="flex gap-3">
+{[1, 2, 3, 4, 5].map(dot => (
+<label key={dot} className="cursor-pointer">
+<input type="radio" name="dotRadio" className="sr-only peer" defaultChecked={dot === 3} />
+<div className="w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full peer-checked:bg-blue-600 peer-checked:scale-150 transition-all"></div>
+</label>
+))}
 </div>`,
     preview: <DotRadio />,
   },
   {
     name: 'VerticalRadio',
     component: VerticalRadio,
-    code: `<div className="component">
-  {/* VerticalRadio */}
+    code: `<div className="space-y-2">
+{['Option 1', 'Option 2', 'Option 3', 'Option 4'].map((opt, i) => (
+<label key={i} className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 has-[:checked]:bg-blue-100 dark:has-[:checked]:bg-blue-900/30">
+<input type="radio" name="verticalRadio" className="w-4 h-4 text-blue-600" defaultChecked={i === 0} />
+<span className="text-gray-700 dark:text-gray-300">{opt}</span>
+</label>
+))}
 </div>`,
     preview: <VerticalRadio />,
   },
   {
     name: 'MaterialRadio',
     component: MaterialRadio,
-    code: `<div className="component">
-  {/* MaterialRadio */}
+    code: `<div className="space-y-3">
+{['Option A', 'Option B', 'Option C'].map((opt, i) => (
+<label key={i} className="flex items-center gap-3 cursor-pointer">
+<div className="relative">
+<input type="radio" name="materialRadio" className="w-5 h-5 appearance-none bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-full checked:border-blue-600 checked:border-[6px] cursor-pointer transition-all" defaultChecked={i === 0} />
+</div>
+<span className="text-gray-700 dark:text-gray-300">{opt}</span>
+</label>
+))}
 </div>`,
     preview: <MaterialRadio />,
   },
@@ -810,8 +999,15 @@ export const radioComponents = [
   {
     name: 'TileRadio',
     component: TileRadio,
-    code: `<div className="component">
-  {/* TileRadio */}
+    code: `<div className="grid grid-cols-4 gap-3">
+{[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
+<label key={num} className="cursor-pointer">
+<input type="radio" name="tileRadio" className="sr-only peer" defaultChecked={num === 3} />
+<div className="aspect-square flex items-center justify-center bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white text-gray-700 dark:text-gray-300 font-bold text-xl transition-all">
+{num}
+</div>
+</label>
+))}
 </div>`,
     preview: <TileRadio />,
   },
@@ -826,8 +1022,15 @@ export const radioComponents = [
   {
     name: 'TimelineRadio',
     component: TimelineRadio,
-    code: `<div className="component">
-  {/* TimelineRadio */}
+    code: `<div className="space-y-4">
+{['Morning', 'Afternoon', 'Evening'].map((time, i) => (
+<label key={i} className="flex items-center gap-4 cursor-pointer group">
+<input type="radio" name="timelineRadio" className="w-6 h-6 text-purple-600" defaultChecked={i === 0} />
+<div className="flex-1 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg group-has-[:checked]:bg-purple-100 dark:group-has-[:checked]:bg-purple-900/20 transition-all">
+<span className="font-medium text-gray-900 dark:text-white">{time}</span>
+</div>
+</label>
+))}
 </div>`,
     preview: <TimelineRadio />,
   },

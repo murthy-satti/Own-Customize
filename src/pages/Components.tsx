@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, X } from 'lucide-react';
 import { allComponents, componentCategories } from '../components/library';
 
 const Components: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Buttons');
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedCode, setSelectedCode] = useState<string>('');
+  const [isCopied, setIsCopied] = useState<boolean>(false);
 
-  const handleCopyCode = (code: string, index: number) => {
-    navigator.clipboard.writeText(code);
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 2000);
+  const handleComponentClick = (code: string) => {
+    setSelectedCode(code);
+    setIsModalOpen(true);
+    setIsCopied(false);
+  };
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(selectedCode);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCode('');
+    setIsCopied(false);
   };
 
   return (
@@ -62,63 +76,73 @@ const Components: React.FC = () => {
             </p>
           </div>
 
-          {/* Components Masonry Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
+          {/* Components Flex Grid */}
+          <div className="flex flex-wrap gap-4 sm:gap-6 items-start">
             {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
               <div
                 key={index}
-                className={`break-inside-avoid  rounded-2xl   dark:border-slate-700 hover:shadow-lg transition-all group max-w-full ${
-                  selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
-                }`}
+                onClick={() => handleComponentClick(component.code)}
+                className="rounded-2xl border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-blue-500 dark:hover:border-blue-500 transition-all bg-white dark:bg-slate-900 overflow-hidden flex-shrink-0 cursor-pointer"
               >
                 {/* Component Preview */}
-                <div className={`relative  flex items-center justify-center ${
-                  selectedCategory === 'Tables' ? 'overflow-x-auto' : 'overflow-hidden'
-                } ${
-                  selectedCategory === 'Headers' || selectedCategory === 'Footers'
-                    ? 'p-2'
-                    : 'p-3'
-                }`}>
-                  {/* Copy Icon */}
-                  <button
-                    onClick={() => handleCopyCode(component.code, index)}
-                    className={`absolute top-2 right-2 p-2 rounded-lg transition-all z-10 ${
-                      copiedIndex === index
-                        ? 'bg-green-500 text-transparent  scale-110'
-                        : 'bg-white/90 dark:bg-slate-900/90 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-900  opacity-0 group-hover:opacity-100'
-                    }`}
-                    title="Copy code"
-                  >
-                    {copiedIndex === index ? (
-                      <Check className="w-4 h-4" />
-                    ) : (
-                      <Copy className="w-4 h-4" />
-                    )}
-                  </button>
-
+                <div className="relative p-4 flex items-center justify-center min-w-0">
                   {/* Component Display */}
-                  <div className={`${
-                    selectedCategory === 'Headers' || selectedCategory === 'Footers'
-                      ? 'scale-50 w-full origin-top'
-                      : selectedCategory === 'Tables'
-                      ? 'w-full min-w-fit'
-                      : ''
-                  }`}>
+                  <div className="w-full max-w-full overflow-auto pointer-events-none">
                     {component.preview}
                   </div>
                 </div>
-
-                {/* Component Name */}
-                {/* <div className="p-4 bg-transparent dark:bg-slate-900">
-                  <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 text-center">
-                    {component.name}
-                  </h3>
-                </div> */}
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Code Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={closeModal}>
+          <div className="bg-[#1e1e1e] rounded-xl shadow-2xl max-w-4xl w-full max-h-[80vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-200">Component Code</h3>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleCopyCode}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                    isCopied
+                      ? 'bg-green-600 text-white'
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
+                >
+                  {isCopied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      Copy Code
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={closeModal}
+                  className="p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body - Code Display */}
+            <div className="flex-1 overflow-auto p-6">
+              <pre className="text-sm font-mono text-gray-300 leading-relaxed">
+                <code className="language-jsx">{selectedCode}</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
