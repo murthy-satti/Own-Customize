@@ -35,3 +35,56 @@
     height: auto;
   }
 }
+
+
+
+
+/* new contact animation  */
+
+
+@property --a {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+
+
+.gradient-shadow {
+  position: relative;
+  filter: url(#glow);
+}
+
+.gradient-shadow::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #0f172a;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.gradient-shadow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: 
+    repeating-conic-gradient(from var(--a, 0deg), 
+         rgba(255, 20, 60, 0.8) 0% 25%,
+            transparent 25% 50%, 
+           rgba(0, 255, 255, 0.8) 50% 75%,
+            transparent 75% 100%);
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(10px); 
+  animation: rotateGradient 6s linear infinite;
+}
+
+.gradient-shadow > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes rotateGradient { 
+  to { --a: 360deg; } 
+}

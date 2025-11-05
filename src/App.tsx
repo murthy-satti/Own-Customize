@@ -4,6 +4,7 @@ import Footer from './components/ui/Footer';
 import Home from './pages/Home';
 import Components from './pages/Components';
 import Customize from './pages/Customize';
+import ContactPage from './pages/Contact';
 
 function AppContent() {
   const location = useLocation();
@@ -17,6 +18,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/components" element={<Components />} />
           <Route path="/customize" element={<Customize />} />
+          <Route path="/contact" element={<ContactPage/>} />
         </Routes>
         {showFooter && <Footer />}
       </div>

@@ -8,7 +8,7 @@ const Components: React.FC = () => {
   const [selectedCode, setSelectedCode] = useState<string>('');
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
-  const handleComponentClick = (code: string) => {
+  const handleComponentDoubleClick = (code: string) => {
     setSelectedCode(code);
     setIsModalOpen(true);
     setIsCopied(false);
@@ -28,7 +28,7 @@ const Components: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-800 flex">
-      {/* Left Sidebar - Categories */}
+      {/* Left Sidebar */}
       <div className="hidden md:block md:w-64 bg-white dark:bg-slate-900 shadow-lg border-r border-gray-200 dark:border-slate-700 overflow-y-auto fixed left-0 top-16 bottom-0">
         <div className="p-6">
           <h2 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Components</h2>
@@ -72,22 +72,25 @@ const Components: React.FC = () => {
           <div className="mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2 break-words">{selectedCategory}</h1>
             <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
-              Click the copy icon to get the code for any component
+              Double-click any component to view and copy its code
             </p>
           </div>
 
-          {/* Components Flex Grid */}
+          {/* Components Grid */}
           <div className="flex flex-wrap gap-4 sm:gap-6 items-start">
             {allComponents[selectedCategory as keyof typeof allComponents].map((component, index) => (
               <div
                 key={index}
-                onClick={() => handleComponentClick(component.code)}
-                className="rounded-2xl border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-blue-500 dark:hover:border-blue-500 transition-all bg-white dark:bg-slate-900 overflow-hidden flex-shrink-0 cursor-pointer"
+                onDoubleClick={() => handleComponentDoubleClick(component.code)} // 👈 double-click only
+                  onContextMenu={(e) => {        // 👈 right-click
+    e.preventDefault();           // prevent default context menu
+    handleComponentDoubleClick(component.code);
+  }}
+                className="rounded-2xl   hover:shadow-lg hover:border-blue-500 dark:hover:border-blue-500 transition-all  overflow-hidden flex-shrink-0 cursor-pointer"
               >
-                {/* Component Preview */}
                 <div className="relative p-4 flex items-center justify-center min-w-0">
-                  {/* Component Display */}
-                  <div className="w-full max-w-full overflow-auto pointer-events-none">
+                  {/* Component Display - Allow interactions */}
+                  <div className="w-full max-w-full overflow-auto">
                     {component.preview}
                   </div>
                 </div>
@@ -134,7 +137,7 @@ const Components: React.FC = () => {
               </div>
             </div>
 
-            {/* Modal Body - Code Display */}
+            {/* Modal Body */}
             <div className="flex-1 overflow-auto p-6">
               <pre className="text-sm font-mono text-gray-300 leading-relaxed">
                 <code className="language-jsx">{selectedCode}</code>
